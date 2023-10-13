@@ -1,0 +1,105 @@
+﻿/* Define styles for the auction page */
+.auction-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.auction-image {
+    margin-top: 30px;
+    max-width: 300px;
+    max-height: 300px;
+}
+
+.auction-details {
+    text-align: center;
+    padding: 10px;
+    border: 2px solid #007b1f;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 30px;
+}
+
+.auction-title {
+    font-size: 28px; /* Increase the font size */
+    margin: 10px 0;
+}
+
+.auction-description {
+    font-size: 18px; /* Increase the font size */
+}
+
+.auction-bid {
+    font-size: 20px; /* Increase the font size */
+    margin: 10px 0;
+}
+
+.auction-duration {
+    font-size: 18px; /* Increase the font size */
+}
+
+.description-editor {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.edit-description-title {
+    font-size: 22px; /* Increase the font size */
+    margin-bottom: 10px;
+}
+
+.description-input {
+    width: 80%; /* Adjust the width as needed */
+    height: 100px; /* Set a fixed height */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px; /* Increase the font size */
+    font-family: Arial, sans-serif; /* Change the font as desired */
+    color: #333; /* Text color */
+    background-color: #f9f9f9; /* Background color */
+    margin: 20px;
+}
+
+.save-button {
+    background-color: #2b7626;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 24px; /* Increase padding for a larger button */
+    font-size: 18px; /* Increase the font size */
+    cursor: pointer;
+}
+
+    .save-button:hover {
+        background-color: #0056b3;
+    }
+
+/* Previous Bids Section Styles */
+.previous-bids {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.previous-bids-title {
+    font-size: 22px; /* Increase the font size */
+    margin-bottom: 10px;
+    color: #2b7626; /* Title text color */
+}
+
+.bid-list {
+    list-style: none;
+    padding: 0;
+
+}
+
+.bid-item {
+    font-size: 18px; /* Increase the font size */
+    margin: 5px 0;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}

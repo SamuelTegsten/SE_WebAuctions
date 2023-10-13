@@ -1,0 +1,112 @@
+﻿/* Styles for row elements */
+.row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    color: #2c2c2c;
+}
+
+/* Styles for column elements */
+.col-2 {
+    flex-basis: 50%;
+    min-width: 300px;
+}
+
+    /* Styles for images within column elements */
+    .col-2 img {
+        max-width: 100%;
+    }
+
+    /* Styles for headings within column elements */
+    .col-2 h1 {
+        color: #000000;
+        font-size: 50px;
+        line-height: 60px;
+        margin: 15px 0;
+        text-shadow: 0 0 5px rgba(12, 82, 18, 0.8);
+    }
+
+    /* Styles for paragraphs within column elements */
+    .col-2 p {
+        color: #000000;
+        font-size: 20px;
+        line-height: 30px;
+        margin: 10px 0;
+        text-shadow: 0 0 3px rgba(12, 82, 18, 0.8);
+        padding-bottom: 10px;
+    }
+
+/* Styles for generic buttons with hover effect */
+.btn {
+    margin-top: 30px;
+    display: inline-block;
+    position: relative;
+    background-color: rgba(0, 0, 0);
+    color: rgba(0, 0, 0);
+    text-decoration: none;
+    font-size: 21px;
+    font-weight: 700;
+    padding: 1em 2em;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+    .btn span {
+        position: relative;
+        z-index: 1;
+    }
+
+    .btn i {
+        position: absolute;
+        inset: 0;
+        display: block;
+    }
+
+    .btn::before {
+        content: "";
+        position: absolute;
+        inset: 3px;
+        background: rgba(111, 129, 96, 1);
+    }
+
+    .btn:hover {
+        background: rgb(255, 253, 253);
+        color: rgba(252, 250, 250, 0.8);
+        letter-spacing: 0.25em;
+        box-shadow: 0 0 25px rgb(10, 53, 6);
+    }
+
+    .btn i::before {
+        content: "";
+        position: absolute;
+        top: 0.1px;
+        left: 80%;
+        width: 22px;
+        height: 3.2px;
+        background: rgba(101, 139, 96, 0.8);
+        transform: translateX(-50%) skewX(325deg);
+        transition: 0.5s;
+    }
+
+    .btn:hover i::before {
+        width: 30px;
+        left: 20%;
+    }
+
+    .btn i::after {
+        content: "";
+        position: absolute;
+        bottom: -0.3px;
+        left: 20%;
+        width: 22px;
+        height: 3.3px;
+        background: rgba(101, 139, 96, 0.8);
+        transform: translateX(-50%) skewX(325deg);
+        transition: 0.5s;
+    }
+
+    .btn:hover i::after {
+        width: 30px;
+        left: 80%;
+    }

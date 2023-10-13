@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<link rel="stylesheet" href="~/css/auctionPage.css" asp-append-version="true" />
+<div class="auction-container">
+    <img src="images/knife1.png" alt="Auction Image" class="auction-image">
+    <div class="auction-details">
+        <h1 class="auction-title">Awesome Auction</h1>
+        <p class="auction-description">This is the description of the auction. You can change it below.</p>
+        <p class="auction-bid">Current Bid: $100</p>
+        <p class="auction-duration">Time Left: 1 day 3 hours</p>
+
+        <!-- Display Previous Bids -->
+        <div class="previous-bids">
+            <h2 class="previous-bids-title">Previous Bids</h2>
+            <ul class="bid-list">
+                <li class="bid-item">Bid 1: $50</li>
+                <li class="bid-item">Bid 2: $75</li>
+                <li class="bid-item">Bid 3: $100</li>
+            </ul>
+        </div>
+        <!-- End of Previous Bids -->
+    </div>
+    <div class="description-editor">
+        <h2 class="edit-description-title">Edit Description</h2>
+        <input id="description-input" class="description-input" rows="4" placeholder="Add a captivating description of the auction...">
+        <button id="save-description" class="save-button">Save Description</button>
+    </div>
+</div>

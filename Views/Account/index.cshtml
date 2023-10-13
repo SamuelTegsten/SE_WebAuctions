@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<link rel="stylesheet" href="~/css/account.css" asp-append-version="true" />
+
+<div class="login-container">
+    <h2 id="form-title">Login</h2>
+    <form id="login-form">
+        <!-- Input fields for username and password -->
+        <input type="text" name="username" class="form-input" placeholder="Username" required id="username-input">
+        <input type="password" name="password" class="form-input" placeholder="Password" required id="password-input">
+        <!-- Submit button for login -->
+        <button type="submit" class="form-button" id="login-button">Login</button>
+    </form>
+    <p class="toggle-link" id="toggle-link">Don't have an account? <a href="#" onclick="toggleForms(event);">Register</a></p>
+
+    <form id="register-form" style="display: none;">
+        <!-- Input fields for new username and password (for registration) -->
+        <input type="text" name="newUsername" class="form-input" placeholder="New Username" required id="new-username-input">
+        <input type="password" name="newPassword" class="form-input" placeholder="New Password" required id="new-password-input">
+        <!-- Submit button for registration -->
+        <button type="submit" class="form-button" id="register-button">Register</button>
+    </form>
+</div>
+
+<script src="~/js/account.js" asp-append-version="true"></script>

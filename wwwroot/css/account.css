@@ -1,0 +1,56 @@
+﻿/* Style for the login container */
+.login-container {
+    width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 8px;
+    margin-top: 100px;
+}
+
+    /* Style for paragraphs inside the login container */
+    .login-container p {
+        padding-top: 10px;
+    }
+
+/* Style for form input fields with class "form-input" */
+.form-input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Style for form submit button with class "form-button" */
+.form-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #174d1a;
+    color: white;
+    font-weight: 700;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Style for the register link with class "register-link" */
+.register-link {
+    margin-top: 10px;
+}
+
+/* Style for the tooltip */
+.tooltip {
+    position: fixed;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ff0000;
+    color: #fff;
+    padding: 30px 60px;
+    border-radius: 10px;
+    display: none;
+    font-weight: 700;
+    font-size: 24px;
+}

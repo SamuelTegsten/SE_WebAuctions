@@ -1,0 +1,284 @@
+﻿.cart-table {
+    margin-top: 20px;
+}
+
+    /* Style for tables within elements with class "cart-table" */
+    .cart-table table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 2px solid #333;
+    }
+
+    /* Style for table header cells and data cells within elements with class "cart-table" */
+    .cart-table th, .cart-table td {
+        padding: 10px;
+        text-align: left;
+        border: 1px solid #ccc;
+    }
+
+    /* Style for table header cells within elements with class "cart-table" */
+    .cart-table th {
+        background-color: #f2f2f2;
+    }
+
+    /* Style for alternating row background colors within elements with class "cart-table" */
+    .cart-table tbody tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    /* Style for table rows on hover within elements with class "cart-table" */
+    .cart-table tbody tr:hover {
+        background-color: #e0e0e0;
+    }
+
+    /* Style for the first cell (column) in each row within elements with class "cart-table" */
+    .cart-table td:first-child {
+        width: 50px;
+        text-align: center;
+    }
+
+    /* Style for images within elements with class "cart-table" */
+    .cart-table img {
+        width: 50px;
+        height: 50px;
+        border: 1px solid #ccc;
+        display: block;
+        margin: 0 auto;
+    }
+
+    /* Style for elements with class "quantity" within elements with class "cart-table" */
+    .cart-table .quantity {
+        text-align: center;
+    }
+
+        /* Style for quantity input fields within elements with class "quantity" */
+        .cart-table .quantity input[type="number"] {
+            width: 50px;
+            height: 30px;
+            text-align: center;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Style for quantity adjustment buttons within elements with class "quantity" */
+        .cart-table .quantity button {
+            width: 30px;
+            height: 30px;
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+
+            /* Style for quantity adjustment buttons on hover within elements with class "quantity" */
+            .cart-table .quantity button:hover {
+                background-color: #ddd;
+            }
+
+/* Apply styles to elements with class "total-amount" */
+.total-amount {
+    margin-top: 20px;
+    text-align: right;
+}
+
+    /* Style for labels within elements with class "total-amount" */
+    .total-amount label {
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+    /* Style for text input fields within elements with class "total-amount" */
+    .total-amount input[type="text"] {
+        width: 100px;
+        height: 30px;
+        text-align: right;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding-right: 10px;
+    }
+
+/* Apply styles to elements with class "cart-buttons" */
+.cart-buttons {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Style for purchase and login buttons within elements with class "cart-buttons" */
+.purchase-button,
+.login-button {
+    padding: 10px 20px;
+    background-color: #127414;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 10px;
+    font-size: 16px;
+}
+
+    /* Style for purchase and login buttons on hover within elements with class "cart-buttons" */
+    .purchase-button:hover,
+    .login-button:hover {
+        background-color: #8ec490;
+    }
+
+.static_textarea {
+    width: 100%;
+    height: auto;
+    resize: none;
+    border: none;
+    background-color: transparent;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    overflow: hidden;
+}
+
+td.image-cell {
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+/* Style for the order table */
+.order-table {
+    margin: 0 auto; /* Center the table horizontally */
+    width: 80%; /* Adjust the width as needed */
+}
+
+    /* Style for the heading level 2 (h2) within elements with class "order-table" */
+    .order-table h2 {
+        padding: 20px;
+        text-align: center;
+    }
+
+    /* Style for tables within elements with class "order-table" */
+    .order-table table {
+        width: 100%;
+        margin-bottom: 50px;
+        border-collapse: collapse;
+    }
+
+    /* Style for table header cells (th) within elements with class "order-table" */
+    .order-table th {
+        background-color: #f2f2f2;
+        text-align: center;
+        padding: 10px;
+        border: 1px solid #ddd;
+        font-weight: bold;
+    }
+
+    /* Style for table data cells (td) within elements with class "order-table" */
+    .order-table td {
+        text-align: center;
+        padding: 8px;
+        border: 1px solid #ddd;
+    }
+
+    /* Style for alternating row background colors within elements with class "order-table" */
+    .order-table tbody tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    /* Style for table rows on hover within elements with class "order-table" */
+    .order-table tbody tr:hover {
+        background-color: #ddd;
+    }
+
+/* Style for buttons with class "pack-button" */
+.pack-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+/* Style for elements with class "add_item" */
+.add_item {
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+    /* Style for heading level 2 (h2) within elements with class "add_item" */
+    .add_item h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+/* Style for elements with class "item_details" */
+.item_details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Style for elements with class "search_item" */
+.search_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Style for file input and text input fields within elements with class "item_details" */
+.item_details input[type="file"],
+.item_details input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Style for buttons with class "add_item_button" */
+.add_item_button {
+    background-color: #2a6219;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 30px;
+}
+
+/* Style for buttons with class "remove_item_button" */
+.remove_item_button {
+    background-color: #811414;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Style for button hover states */
+.add_item_button:hover {
+    background-color: #57dc35;
+}
+
+.remove_item_button:hover {
+    background-color: #c72020;
+}
+
+/* Style for file input and text input fields on hover */
+.item_details input[type="file"]:hover,
+.item_details input[type="text"]:hover {
+    background-color: #fff;
+    transition: background-color 0.3s ease;
+}

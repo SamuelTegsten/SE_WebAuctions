@@ -1,0 +1,88 @@
+﻿/* Create a container to center content on the page */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Style for heading level 2 (h2) elements */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Styles for elements with class "add_user", "add_admin", "remove_staff", "remove_admin", "user_table", "add_auction", "remove_auction" */
+.add_user,
+.add_admin,
+.remove_staff,
+.remove_admin,
+.user_table,
+.add_auction,
+.remove_auction {
+    margin-bottom: 20px;
+}
+
+/* Style for form elements */
+form {
+    border: 4px groove #cccccc;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 20px;
+    font-size: 20px;
+    font: 700;
+}
+
+    /* Style for text input, password input, and select elements within a form */
+    form input[type="text"],
+    form input[type="password"],
+    form select {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 5px;
+    }
+
+    /* Style for buttons within a form */
+    form button {
+        background-color: #12491a;
+        color: #fff;
+        font-weight: 700;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+    }
+
+/* Add space between User Table and elements above */
+.user_table h3 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+/* Center the "Load Users" button */
+.user_table button {
+    display: block;
+    margin: 0 auto;
+}
+
+/* Style for tables */
+table {
+    margin-top: 30px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Style for table headers and table data cells */
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+/* Style for table header cells */
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+/* Style for table header cells with a background color */
+th {
+    background-color: #14611f;
+    color: #fff;
+}
