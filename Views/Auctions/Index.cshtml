@@ -1,71 +1,21 @@
-﻿<!DOCTYPE html>
+﻿@model IEnumerable<WebAuctions.ViewModels.AuctionVM>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-TfRXPnSna2Gp5z8b0u7OnwyJj5T5TBdP/uFptpjU1JqV9zIq0sobav2iJ6bwa6M8" crossorigin="anonymous">
+
+<!DOCTYPE html>
 <link rel="stylesheet" href="~/css/auctions.css" asp-append-version="true" />
 <h2 class="title">Auctions</h2>
 <div class="auction-items">
     <!-- Display auction items here -->
-    <div class="auction-item">
-        <img src="images/logo.jpg" alt="Item Image">
-        <h3>Item Name 1</h3>
-        <p class="current-bid">Current Bid: $100</p>
-        <p class="time-left">Time Left: 2 hours</p>
-        <button class="place-bid-button">Place Bid</button>
-    </div>
-
-    <div class="auction-item">
-        <img src="images/logo.jpg" alt="Item Image" >
-        <h3>Item Name 2</h3>
-        <p class="current-bid">Current Bid: $75</p>
-        <p class="time-left">Time Left: 4 hours</p>
-        <button class="place-bid-button">Place Bid</button>
-    </div>
-
-    <div class="auction-item">
-        <img src="images/logo.jpg" alt="Item Image">
-        <h3>Item Name 2</h3>
-        <p class="current-bid">Current Bid: $75</p>
-        <p class="time-left">Time Left: 4 hours</p>
-        <button class="place-bid-button">Place Bid</button>
-    </div>
-
-    <div class="auction-item">
-        <img src="images/logo.jpg" alt="Item Image">
-        <h3>Item Name 2</h3>
-        <p class="current-bid">Current Bid: $75</p>
-        <p class="time-left">Time Left: 4 hours</p>
-        <button class="place-bid-button">Place Bid</button>
-    </div>
-
-    <div class="auction-item">
-        <img src="images/logo.jpg" alt="Item Image">
-        <h3>Item Name 2</h3>
-        <p class="current-bid">Current Bid: $75</p>
-        <p class="time-left">Time Left: 4 hours</p>
-        <button class="place-bid-button">Place Bid</button>
-    </div>
-
-    <div class="auction-item">
-        <img src="images/logo.jpg" alt="Item Image">
-        <h3>Item Name 2</h3>
-        <p class="current-bid">Current Bid: $75</p>
-        <p class="time-left">Time Left: 4 hours</p>
-        <button class="place-bid-button">Place Bid</button>
-    </div>
-
-    <div class="auction-item">
-        <img src="images/logo.jpg" alt="Item Image">
-        <h3>Item Name 2</h3>
-        <p class="current-bid">Current Bid: $75</p>
-        <p class="time-left">Time Left: 4 hours</p>
-        <button class="place-bid-button">Place Bid</button>
-    </div>
-
-    <div class="auction-item">
-        <img src="images/logo.jpg" alt="Item Image">
-        <h3>Item Name 2</h3>
-        <p class="current-bid">Current Bid: $75</p>
-        <p class="time-left">Time Left: 4 hours</p>
-        <button class="place-bid-button">Place Bid</button>
-    </div>
-
-    <!-- Add more auction items as needed -->
+    @foreach (var auction in Model)
+    {
+        <div class="auction-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="AuctionPage" asp-action="Index" asp-route-id="@auction.Id">
+                <img src="@((auction.Item != null) ? auction.Item.Picture : string.Empty)" alt="Item Image">
+            </a>
+            <h3>@((auction.Item != null) ? auction.Item.Name : string.Empty)</h3>
+            <p class="current-bid">Current Bid: $@auction.Bid</p>
+            <p class="time-left">Time Left: @auction.Duration hours</p>
+            <button class="place-bid-button">Place Bid</button>
+        </div>
+    }
 </div>

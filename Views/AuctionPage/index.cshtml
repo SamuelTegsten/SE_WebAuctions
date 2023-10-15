@@ -1,12 +1,14 @@
-﻿<!DOCTYPE html>
+﻿@model WebAuctions.ViewModels.AuctionVM
+
+<!DOCTYPE html>
 <link rel="stylesheet" href="~/css/auctionPage.css" asp-append-version="true" />
 <div class="auction-container">
-    <img src="images/knife1.png" alt="Auction Image" class="auction-image">
+    <img src="/@Model.Item.Picture" alt="Auction Image" class="auction-image">
     <div class="auction-details">
-        <h1 class="auction-title">Awesome Auction</h1>
-        <p class="auction-description">This is the description of the auction. You can change it below.</p>
-        <p class="auction-bid">Current Bid: $100</p>
-        <p class="auction-duration">Time Left: 1 day 3 hours</p>
+        <h1 class="auction-title">@Model.Item.Name</h1>
+        <p class="auction-description">@Model.Item.Description</p>
+        <p class="auction-bid">Current Bid: $@Model.Bid</p>
+        <p class="auction-duration">Time Left: @Model.Duration</p>
 
         <!-- Display Previous Bids -->
         <div class="previous-bids">

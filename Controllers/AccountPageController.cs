@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebAuctions.Core.Model;
+using WebAuctions.ViewModels;
 
 namespace WebAuctions.Controllers
 {

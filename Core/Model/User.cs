@@ -1,4 +1,4 @@
-﻿namespace WebAuctions.Core
+﻿namespace WebAuctions.Core.Model
 {
     public class User
     {

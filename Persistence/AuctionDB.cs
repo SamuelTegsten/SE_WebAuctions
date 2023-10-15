@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using WebAuctions.Core;
+using WebAuctions.Core.Model;
 
 namespace WebAuctions.Persistence
 {
@@ -10,12 +10,12 @@ namespace WebAuctions.Persistence
         public int Id { get; set; }
 
         [ForeignKey("Item")]
-        [MaxLength(128)]
         public String ItemName { get; set; }
 
         [ForeignKey("User")]
         public string Username { get; set; }
-        public TimeSpan Duration { get; set; }
+
+        public int Duration { get; set; }
 
         [DataType(DataType.DateTime)]
         public DateTime Date { get; set; }
