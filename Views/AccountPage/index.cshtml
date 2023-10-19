@@ -1,7 +1,7 @@
-<!DOCTYPE html>
 <link rel="stylesheet" href="~/css/accountPage.css" asp-append-version="true" />
+@model IEnumerable<WebAuctions.ViewModels.AuctionVM>
 <div class="order-table">
-    <h2>UserName Account Screen</h2>
+    <h2>@User.Identity.Name    -   Account Screen</h2>
     <h2>Current Auctions</h2>
     <table>
         <thead>
@@ -14,16 +14,22 @@
             </tr>
         </thead>
         <tbody>
-            <!-- This is where you will dynamically populate the order data rows -->
-            <tr>
-                <td><></td>
-                <td><></td>
-                <td><></td>
-                <td><></td>
-                <td><></td>
-            </tr>
+            @foreach (var auction in Model)
+            {
+                @if (auction.Duration > 0)
+            {
+                    <tr>
+                        <td>@auction.Item.Name</td>
+                        <td>@auction.Bid</td>
+                        <td>@auction.Duration</td>
+                        <td>@auction.Date</td>
+                        <td>@auction.Item.Description</td>
+                    </tr>
+                } 
+            }
         </tbody>
     </table>
+
     <h2>Auctions Won</h2>
     <table>
         <thead>
@@ -35,14 +41,18 @@
             </tr>
         </thead>
         <tbody>
-            <!-- This is where you will dynamically populate the order data rows -->
-            <tr>
-                <td><></td>
-                <td><></td>
-                <td><></td>
-                <td><></td>
-            </tr>
+            @foreach (var auction in Model)
+            {
+                @if (auction.Duration <= 0)
+                {
+                    <tr>
+                        <td>@auction.Item.Name</td>
+                        <td>@auction.Bid</td>
+                        <td>@auction.Date</td>
+                        <td>@auction.Item.Description</td>
+                    </tr>
+                }
+            }
         </tbody>
     </table>
-    <a href="logout.jsp" class="purchase-button">Log Out</a>
 </div>

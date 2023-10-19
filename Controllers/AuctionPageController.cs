@@ -1,4 +1,5 @@
 ﻿using System.Runtime.Intrinsics.X86;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebAuctions.Core.Interfaces.Service;
 using WebAuctions.Core.Model;
@@ -6,6 +7,7 @@ using WebAuctions.ViewModels;
 
 namespace WebAuctions.Controllers
 {
+    [Authorize]
     public class AuctionPageController : Controller
     {
 

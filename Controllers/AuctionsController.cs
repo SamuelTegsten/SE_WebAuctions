@@ -1,4 +1,5 @@
 ﻿using System.Security.Cryptography;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebAuctions.Core.Interfaces.Service;
 using WebAuctions.Core.Model;
@@ -8,6 +9,7 @@ namespace WebAuctions.Controllers
 {
     namespace WebAuctions.Controllers
     {
+        [Authorize]
         public class AuctionsController : Controller
         {
             private readonly IAuctionService auctionService;

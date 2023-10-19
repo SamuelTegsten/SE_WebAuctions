@@ -12,7 +12,6 @@ namespace WebAuctions.Persistence
         [ForeignKey("Item")]
         public String ItemName { get; set; }
 
-        [ForeignKey("User")]
         public string Username { get; set; }
 
         public int Duration { get; set; }

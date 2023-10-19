@@ -53,6 +53,28 @@ namespace WebAuctions.Persistence.SqlPersistence
             throw new InvalidOperationException("Auction not found");
         }
 
+        public List<Auction> GetAuctionsByName(string userName)
+        {
+            var auctionDbs = _dbContext.AuctionDBs.Where(a => a.Username == userName).ToList();
+            var result = new List<Auction>();
+
+            foreach (var auctionDb in auctionDbs)
+            {
+                var auction = new Auction(
+                    auctionDb.Id,
+                    GetItem(auctionDb.ItemName),
+                    auctionDb.Duration,
+                    auctionDb.Date,
+                    auctionDb.Bid,
+                    auctionDb.Username
+                );
+
+                result.Add(auction);
+            }
+
+            return result;
+        }
+
         private Item GetItem(string ItemName)
         {
             var itemDb = _dbContext.ItemDBs.FirstOrDefault(i => i.Name == ItemName);

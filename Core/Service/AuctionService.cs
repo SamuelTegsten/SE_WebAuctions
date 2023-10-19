@@ -20,5 +20,10 @@ namespace WebAuctions.Core.Service
         {
             return _auctionPersistence.GetAuctionById(id);
         }
+
+        public List<Auction> GetAuctionsByName(string UserName)
+        {
+            return _auctionPersistence.GetAuctionsByName(UserName);
+        }
     }
 }

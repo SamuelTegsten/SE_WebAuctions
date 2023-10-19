@@ -9,7 +9,6 @@ namespace WebAuctions.Persistence.Context
         public ProjectDbContext(DbContextOptions<ProjectDbContext> options) : base(options) { }
 
         public DbSet<AuctionDB> AuctionDBs { get; set; }
-        public DbSet<UserDB> UserDBs { get; set; }
         public DbSet<ItemDB> ItemDBs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -25,16 +24,6 @@ namespace WebAuctions.Persistence.Context
                     Status = AuctionStatus.Active,
                     Bid = 50,
                 });
-
-            modelBuilder.Entity<UserDB>().HasData(
-                new UserDB
-                {
-                    UserId = -1,
-                    Username = "user",
-                    Password = "password",
-                    Permission = UserRole.USER
-                });
-
 
             modelBuilder.Entity<ItemDB>().HasData(
                 new ItemDB
