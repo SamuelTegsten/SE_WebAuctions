@@ -15,10 +15,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ProjectDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("ProjectDbConnection")));
+    options.UseSqlite(builder.Configuration.GetConnectionString("ProjectDbConnection")));
 
 builder.Services.AddDbContext<ProjectDbIdentityContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("ProjectDbIdentityContextConnection")));
+    options.UseSqlite(builder.Configuration.GetConnectionString("ProjectDbIdentityContextConnection")));
 builder.Services.AddDefaultIdentity<WebAuctionsUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ProjectDbIdentityContext>();
 
 
