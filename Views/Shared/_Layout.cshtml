@@ -39,7 +39,12 @@
                                     <a class="nav-link text-dark" asp-area="" asp-controller="AccountPage" asp-action="Index">Your Auctions</a>
                                 </li>
                             }
-
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="CreateAuction" asp-action="Index">Create Auction</a>
+                                </li>
+                            }
                             @if (User.IsInRole("Admin"))
                             {
                                 <li class="nav-item">
