@@ -2,7 +2,6 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebAuctions.Persistence.Context;
@@ -12,47 +11,41 @@ using WebAuctions.Persistence.Context;
 namespace WebAuctions.Migrations
 {
     [DbContext(typeof(ProjectDbContext))]
-    [Migration("20231015093225_Initial")]
-    partial class Initial
+    [Migration("20231019111845_InitialE")]
+    partial class InitialE
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.12")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
-
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            modelBuilder.HasAnnotation("ProductVersion", "7.0.12");
 
             modelBuilder.Entity("WebAuctions.Persistence.AuctionDB", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("INTEGER");
 
                     b.Property<double>("Bid")
                         .HasMaxLength(128)
-                        .HasColumnType("float");
+                        .HasColumnType("REAL");
 
                     b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("Duration")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("ItemName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("Status")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Username")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -62,28 +55,28 @@ namespace WebAuctions.Migrations
                         new
                         {
                             Id = -1,
-                            Bid = 0.0,
-                            Date = new DateTime(2023, 10, 15, 11, 32, 25, 701, DateTimeKind.Local).AddTicks(6801),
-                            Duration = 240,
-                            ItemName = "start",
-                            Status = 1,
-                            Username = "start"
+                            Bid = 50.0,
+                            Date = new DateTime(2023, 10, 19, 13, 18, 45, 461, DateTimeKind.Local).AddTicks(6490),
+                            Duration = 3,
+                            ItemName = "Large Tent",
+                            Status = 0,
+                            Username = "user"
                         });
                 });
 
             modelBuilder.Entity("WebAuctions.Persistence.ItemDB", b =>
                 {
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Picture")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Name");
 
@@ -92,9 +85,9 @@ namespace WebAuctions.Migrations
                     b.HasData(
                         new
                         {
-                            Name = "Garbage",
-                            Description = "garbage",
-                            Picture = "images/garbage.png"
+                            Name = "Large Tent",
+                            Description = "A Large Tent",
+                            Picture = "images/tent1.png"
                         });
                 });
 
@@ -102,20 +95,18 @@ namespace WebAuctions.Migrations
                 {
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("Permission")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Username")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("UserId");
 

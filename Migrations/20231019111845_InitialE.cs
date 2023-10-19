@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace WebAuctions.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class InitialE : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,14 +15,14 @@ namespace WebAuctions.Migrations
                 name: "AuctionDBs",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ItemName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Username = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Duration = table.Column<int>(type: "int", nullable: false),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Status = table.Column<int>(type: "int", nullable: false),
-                    Bid = table.Column<double>(type: "float", maxLength: 128, nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ItemName = table.Column<string>(type: "TEXT", nullable: false),
+                    Username = table.Column<string>(type: "TEXT", nullable: false),
+                    Duration = table.Column<int>(type: "INTEGER", nullable: false),
+                    Date = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Status = table.Column<int>(type: "INTEGER", nullable: false),
+                    Bid = table.Column<double>(type: "REAL", maxLength: 128, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -33,9 +33,9 @@ namespace WebAuctions.Migrations
                 name: "ItemDBs",
                 columns: table => new
                 {
-                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Picture = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false)
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Picture = table.Column<string>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 256, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -46,11 +46,11 @@ namespace WebAuctions.Migrations
                 name: "UserDBs",
                 columns: table => new
                 {
-                    UserId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Username = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Permission = table.Column<int>(type: "int", nullable: false)
+                    UserId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Username = table.Column<string>(type: "TEXT", nullable: false),
+                    Password = table.Column<string>(type: "TEXT", nullable: false),
+                    Permission = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -60,12 +60,12 @@ namespace WebAuctions.Migrations
             migrationBuilder.InsertData(
                 table: "AuctionDBs",
                 columns: new[] { "Id", "Bid", "Date", "Duration", "ItemName", "Status", "Username" },
-                values: new object[] { -1, 0.0, new DateTime(2023, 10, 15, 11, 32, 25, 701, DateTimeKind.Local).AddTicks(6801), 240, "start", 1, "start" });
+                values: new object[] { -1, 50.0, new DateTime(2023, 10, 19, 13, 18, 45, 461, DateTimeKind.Local).AddTicks(6490), 3, "Large Tent", 0, "user" });
 
             migrationBuilder.InsertData(
                 table: "ItemDBs",
                 columns: new[] { "Name", "Description", "Picture" },
-                values: new object[] { "Garbage", "garbage", "images/garbage.png" });
+                values: new object[] { "Large Tent", "A Large Tent", "images/tent1.png" });
 
             migrationBuilder.InsertData(
                 table: "UserDBs",

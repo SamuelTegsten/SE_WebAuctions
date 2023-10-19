@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ProjectDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("ProjectDbConnection")));
+    options.UseSqlite(builder.Configuration.GetConnectionString("ProjectDbConnection")));
 
 builder.Services.AddScoped<IAuctionPersistence, AuctionSqlPersistence>();
 builder.Services.AddScoped<IUserPersistence, UserSqlPersistence>();
