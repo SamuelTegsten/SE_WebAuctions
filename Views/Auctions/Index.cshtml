@@ -13,8 +13,8 @@
                 <img src="@((auction.Item != null) ? auction.Item.Picture : string.Empty)" alt="Item Image">
             </a>
             <h3>@((auction.Item != null) ? auction.Item.Name : string.Empty)</h3>
-            <p class="current-bid">Current Bid: $@auction.Bid</p>
-            <p class="time-left">Time Left: @auction.Duration hours</p>
+            <p class="current-bid">Current Bid: $</p>
+            <p class="time-left">Due Date: @auction.EndDate</p>
             <button class="place-bid-button">Place Bid</button>
         </div>
     }

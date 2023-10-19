@@ -7,8 +7,8 @@
     <div class="auction-details">
         <h1 class="auction-title">@Model.Item.Name</h1>
         <p class="auction-description">@Model.Item.Description</p>
-        <p class="auction-bid">Current Bid: $@Model.Bid</p>
-        <p class="auction-duration">Time Left: @Model.Duration</p>
+        <p class="auction-bid">Opening Price: $@Model.OpeningPrice</p>
+        <p class="auction-duration">Due date: @Model.EndDate</p>
 
         <!-- Display Previous Bids -->
         <div class="previous-bids">

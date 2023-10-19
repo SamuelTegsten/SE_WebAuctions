@@ -20,14 +20,8 @@ namespace WebAuctions.Controllers
 
         public IActionResult Index(int id)
         {
-            Auction auctions = auctionService.GetAuctionById(id);
-            AuctionVM vm = new();
-            vm.Id = id;
-            vm.Item = auctions.Item;
-            vm.Duration = auctions.Duration;
-            vm.Status = auctions.Status;
-            vm.Date = auctions.Date;
-            vm.Bid = auctions.Bid;
+            Auction auction = auctionService.GetAuctionById(id);
+            AuctionVM vm = AuctionVM.FromAuction(auction);
             return View(vm);
         }
     }

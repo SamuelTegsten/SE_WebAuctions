@@ -23,11 +23,9 @@ namespace WebAuctions.Persistence.SqlPersistence
                 var auction = new Auction(
                     act.Id,
                     GetItem(act.ItemName),
-                    act.Duration,
-                    act.Date,
-                    act.Bid,
-                    act.Username
-                    );
+                    act.Auctioneer,
+                    act.OpeningPrice,
+                    act.EndDate);
                 result.Add(auction);
             }
             return result;
@@ -42,10 +40,9 @@ namespace WebAuctions.Persistence.SqlPersistence
                 var auction = new Auction(
                     auctionDb.Id,
                     GetItem(auctionDb.ItemName),
-                    auctionDb.Duration,
-                    auctionDb.Date,
-                    auctionDb.Bid,
-                    auctionDb.Username
+                    auctionDb.Auctioneer,
+                    auctionDb.OpeningPrice,
+                    auctionDb.EndDate
                 );
 
                 return auction;
@@ -55,7 +52,7 @@ namespace WebAuctions.Persistence.SqlPersistence
 
         public List<Auction> GetAuctionsByName(string userName)
         {
-            var auctionDbs = _dbContext.AuctionDBs.Where(a => a.Username == userName).ToList();
+            var auctionDbs = _dbContext.AuctionDBs.Where(a => a.Auctioneer == userName).ToList();
             var result = new List<Auction>();
 
             foreach (var auctionDb in auctionDbs)
@@ -63,10 +60,9 @@ namespace WebAuctions.Persistence.SqlPersistence
                 var auction = new Auction(
                     auctionDb.Id,
                     GetItem(auctionDb.ItemName),
-                    auctionDb.Duration,
-                    auctionDb.Date,
-                    auctionDb.Bid,
-                    auctionDb.Username
+                    auctionDb.Auctioneer,
+                    auctionDb.OpeningPrice,
+                    auctionDb.EndDate
                 );
 
                 result.Add(auction);

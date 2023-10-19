@@ -9,21 +9,24 @@ namespace WebAuctions.Persistence
         [Key]
         public int Id { get; set; }
 
+        [Required]
         [ForeignKey("Item")]
-        public String ItemName { get; set; }
+        public string ItemName { get; set; }
 
-        public string Username { get; set; }
-
-        public int Duration { get; set; }
-
-        [DataType(DataType.DateTime)]
-        public DateTime Date { get; set; }
-
-        [EnumDataType(typeof(AuctionStatus))]
-        public AuctionStatus Status { get; set; }
-
+        [Required]
         [MaxLength(128)]
-        public double Bid { get; set; }
+        public string Auctioneer { get; set; }
+
+        [Required]
+        public double OpeningPrice { get; set; }
+
+        [Required]
+        [DataType(DataType.DateTime)]
+        public DateTime EndDate { get; set; }
+
+        public ItemDB Item { get; set; } // Navigation property
+      
+        public List<BidDB> BidDBs { get; set; } = new List<BidDB>();
 
     }
 }

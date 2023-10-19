@@ -4,21 +4,21 @@
     {
         public int Id { get; set; }
         public Item Item { get; set; }
-        public int Duration { get; set; }
-        public DateTime Date { get; set; }
-        public AuctionStatus Status { get; set; }
-        public double Bid { get; set; }
-        public string Username { get; set; }
+        public string Auctioneer { get; set; }
+        public double OpeningPrice { get; set; }
+        public DateTime EndDate { get; set; }
 
-        public Auction(int Id, Item item, int duration, DateTime date, double bid, string username)
+        private List<Bid> _bids = new List<Bid>();
+        public IEnumerable<Bid> Bids => _bids;
+
+        public Auction(int id, Item item, string auctioneer, double openingPrice, DateTime endDate)
         {
-            this.Id = Id;
-            this.Item = item;
-            this.Duration = duration;
-            this.Date = date;
-            this.Status = AuctionStatus.Active;
-            this.Bid = bid;
-            this.Username = username;
+            Id = id;
+            Item = item;
+            Auctioneer = auctioneer;
+            OpeningPrice = openingPrice;
+            EndDate = endDate;
+
         }
     }
 }

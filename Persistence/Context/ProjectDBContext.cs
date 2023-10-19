@@ -18,11 +18,9 @@ namespace WebAuctions.Persistence.Context
                 {
                     Id = -1,
                     ItemName = "Large Tent",
-                    Username = "user",
-                    Duration = 3,
-                    Date = DateTime.Now,
-                    Status = AuctionStatus.Active,
-                    Bid = 50,
+                    Auctioneer = "user",
+                    OpeningPrice = 5000.50,
+                    EndDate = DateTime.Now,                    
                 });
 
             modelBuilder.Entity<ItemDB>().HasData(

@@ -7,22 +7,22 @@
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Current Bid</th>
-                <th>Time left</th>
-                <th>Date</th>
+                <th>Auctioneer</th>
+                <th>Opening Price</th>
+                <th>Due date</th>
                 <th>Description</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var auction in Model)
             {
-                @if (auction.Duration > 0)
+                @if (DateTime.Now < auction.EndDate)
             {
                     <tr>
                         <td>@auction.Item.Name</td>
-                        <td>@auction.Bid</td>
-                        <td>@auction.Duration</td>
-                        <td>@auction.Date</td>
+                        <td>@auction.Auctioneer</td>
+                        <td>@auction.OpeningPrice</td>
+                        <td>@auction.EndDate</td>
                         <td>@auction.Item.Description</td>
                     </tr>
                 } 
@@ -43,12 +43,12 @@
         <tbody>
             @foreach (var auction in Model)
             {
-                @if (auction.Duration <= 0)
+                @if (DateTime.Now < auction.EndDate)
                 {
                     <tr>
                         <td>@auction.Item.Name</td>
-                        <td>@auction.Bid</td>
-                        <td>@auction.Date</td>
+                        <td></td>
+                        <td>@auction.EndDate</td>
                         <td>@auction.Item.Description</td>
                     </tr>
                 }
