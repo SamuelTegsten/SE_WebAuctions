@@ -5,7 +5,7 @@ using WebAuctions.Areas.Identity.Data;
 
 namespace WebAuctions.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         private readonly UserManager<WebAuctionsUser> _userManager;
