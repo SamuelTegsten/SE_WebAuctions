@@ -31,9 +31,10 @@ namespace WebAuctions.Persistence.SqlPersistence
             return result;
         }
 
+
         public Auction GetAuctionById(int id)
         {
-            var auctionDb = _dbContext.AuctionDBs.FirstOrDefault(a => a.Id == id);
+            var auctionDb = _dbContext.AuctionDBs.Include(a => a.BidDBs).Where(a => a.Id == id).SingleOrDefault();
 
             if (auctionDb != null)
             {
@@ -44,6 +45,11 @@ namespace WebAuctions.Persistence.SqlPersistence
                     auctionDb.OpeningPrice,
                     auctionDb.EndDate
                 );
+                foreach (BidDB bidDb in auctionDb.BidDBs)
+                {
+                    var bid = new Bid(bidDb.Id, bidDb.Bidder, bidDb.Amount, bidDb.Date);
+                    auction.AddBid(bid);
+                }
 
                 return auction;
             }

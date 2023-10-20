@@ -1,4 +1,4 @@
-﻿@model WebAuctions.ViewModels.AuctionVM
+﻿@model WebAuctions.ViewModels.AuctionDetailsVM
 
 <!DOCTYPE html>
 <link rel="stylesheet" href="~/css/auctionPage.css" asp-append-version="true" />
@@ -14,9 +14,10 @@
         <div class="previous-bids">
             <h2 class="previous-bids-title">Previous Bids</h2>
             <ul class="bid-list">
-                <li class="bid-item">Bid 1: $50</li>
-                <li class="bid-item">Bid 2: $75</li>
-                <li class="bid-item">Bid 3: $100</li>
+                @for(int i=0; i<Model.BidVMs.Count; i++)
+                {
+                    <li class="bid-item">Bid @(i+1): @Model.BidVMs[i].Bidder ($@Model.BidVMs[i].Amount)</li>
+                }
             </ul>
         </div>
         <!-- End of Previous Bids -->

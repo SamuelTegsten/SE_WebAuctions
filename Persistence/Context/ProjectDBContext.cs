@@ -10,6 +10,8 @@ namespace WebAuctions.Persistence.Context
 
         public DbSet<AuctionDB> AuctionDBs { get; set; }
         public DbSet<ItemDB> ItemDBs { get; set; }
+        public DbSet<BidDB> BidDBs { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -20,9 +22,27 @@ namespace WebAuctions.Persistence.Context
                     ItemName = "Large Tent",
                     Auctioneer = "user",
                     OpeningPrice = 5000.50,
-                    EndDate = DateTime.Now,                    
+                    EndDate = DateTime.Now,
+                    BidDBs = new List<BidDB>()
                 });
-
+            BidDB bidDB1 = new BidDB()
+            {
+                Id = -1,
+                Bidder = "Samuel",
+                Amount = 500000.00,
+                Date = DateTime.Now,
+                AuctionId = -1
+            };
+            BidDB bidDB2 = new BidDB()
+            {
+                Id = -2,
+                Bidder = "Esteban",
+                Amount = 10000000.00,
+                Date = DateTime.Now,
+                AuctionId = -1,
+            };
+            modelBuilder.Entity<BidDB>().HasData(bidDB1);
+            modelBuilder.Entity<BidDB>().HasData(bidDB2);
             modelBuilder.Entity<ItemDB>().HasData(
                 new ItemDB
                 {
@@ -30,6 +50,7 @@ namespace WebAuctions.Persistence.Context
                     Name = "Large Tent",
                     Description = "A Large Tent",
                 });
+
         }
     }
 }

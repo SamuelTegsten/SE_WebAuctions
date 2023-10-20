@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebAuctions.Persistence.Context;
 
@@ -10,9 +11,11 @@ using WebAuctions.Persistence.Context;
 namespace WebAuctions.Migrations
 {
     [DbContext(typeof(ProjectDbContext))]
-    partial class ProjectDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231020150156_BidWhenCreating3")]
+    partial class BidWhenCreating3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.12");
@@ -49,7 +52,7 @@ namespace WebAuctions.Migrations
                         {
                             Id = -1,
                             Auctioneer = "user",
-                            EndDate = new DateTime(2023, 10, 20, 17, 14, 16, 368, DateTimeKind.Local).AddTicks(2600),
+                            EndDate = new DateTime(2023, 10, 20, 17, 1, 55, 863, DateTimeKind.Local).AddTicks(4780),
                             ItemName = "Large Tent",
                             OpeningPrice = 5000.5
                         });
@@ -79,25 +82,7 @@ namespace WebAuctions.Migrations
 
                     b.HasIndex("AuctionId");
 
-                    b.ToTable("BidDBs");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = -1,
-                            Amount = 500000.0,
-                            AuctionId = -1,
-                            Bidder = "Samuel",
-                            Date = new DateTime(2023, 10, 20, 17, 14, 16, 368, DateTimeKind.Local).AddTicks(3280)
-                        },
-                        new
-                        {
-                            Id = -2,
-                            Amount = 10000000.0,
-                            AuctionId = -1,
-                            Bidder = "Esteban",
-                            Date = new DateTime(2023, 10, 20, 17, 14, 16, 368, DateTimeKind.Local).AddTicks(3290)
-                        });
+                    b.ToTable("BidDB");
                 });
 
             modelBuilder.Entity("WebAuctions.Persistence.ItemDB", b =>

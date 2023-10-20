@@ -1,4 +1,4 @@
-﻿using WebAuctions.Core.Model;
+﻿ using WebAuctions.Core.Model;
 
 namespace WebAuctions.Core.Interfaces.Service
 {

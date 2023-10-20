@@ -20,5 +20,10 @@
             EndDate = endDate;
 
         }
+
+        public void AddBid(Bid newBid)
+        {
+            _bids.Add(newBid);
+        }
     }
 }
