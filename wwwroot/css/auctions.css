@@ -49,6 +49,7 @@ h3 {
 }
 
 .place-bid-button {
+    margin-top: 20px;
     background-color: #3b8738;
     color: #fff;
     border: none;
@@ -61,3 +62,11 @@ h3 {
     .place-bid-button:hover {
         background-color: #0056b3;
     }
+
+.error-input {
+    border: 1px solid red;
+}
+
+.text-danger {
+    color: red;
+}

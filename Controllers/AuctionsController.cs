@@ -37,16 +37,14 @@ namespace WebAuctions.Controllers
             [ValidateAntiForgeryToken]
             public IActionResult Create(AuctionVM model)
             {
-                System.Diagnostics.Debug.WriteLine("Debug Print - Model:");
-                System.Diagnostics.Debug.WriteLine($"Model id: {model.Id}");
-                System.Diagnostics.Debug.WriteLine($"Bid Count: {model.Bid.Count}");
+                string bidAsString = model.auctionName; 
+                decimal bid;
+                bid = decimal.Parse(bidAsString);
 
                 string userName = User.Identity.Name;
 
-                   bidService.addBid(new Bid(model.Id, userName, model.Bid[model.Bid.Count - 1].BidAmount, DateTime.Now));
-                   return RedirectToAction("Index");
-
-                return View(model);
+                bidService.addBid(new Bid(model.Id, userName, bid, DateTime.Now));
+                return RedirectToAction("Index");
             }
         }
     }
