@@ -23,10 +23,17 @@ namespace WebAuctions.Persistence.Context
                 new AuctionDB
                 {
                     Id = -1,
-                    ItemName = "testItem",
+                    ItemName = "Large Tent",
                     ExpirationDate = DateTime.Now.AddDays(3),
                     Date = DateTime.Now,
                     AuctionName = "user",
+                });
+            modelBuilder.Entity<ItemDB>().HasData(
+                new ItemDB
+                {
+                    Picture = "images/tent1.png",
+                    Name = "Large Tent",
+                    Description = "A Large Tent",
                 });
         }
     }
