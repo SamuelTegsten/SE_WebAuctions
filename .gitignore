@@ -3,7 +3,12 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# Esteban added this ones:
+appsettings.json
+Migrations/
+
 # User-specific files
+
 *.rsuser
 *.suo
 *.user
