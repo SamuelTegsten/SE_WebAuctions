@@ -36,12 +36,8 @@ namespace WebAuctions.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(AuctionVM model)
         {
-            if (ModelState.IsValid)
-            {
-                itemService.UpdateDescription(model.Item, model.Item.Description);
-                return RedirectToAction("Index", new { id = model.Id });
-            }
-            return View(model);
+            itemService.UpdateDescription(model.Item, model.Item.Description);
+            return RedirectToAction("Index", new { id = model.Id });
         }
     }
 }
