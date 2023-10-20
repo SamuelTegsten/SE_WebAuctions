@@ -14,13 +14,25 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+var databaseProvider = builder.Configuration.GetSection("DatabaseConfiguration")["Provider"];
 
-builder.Services.AddDbContext<ProjectDbContext>(options =>
+if (databaseProvider == "SqlServer")
+{
+    builder.Services.AddDbContext<ProjectDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ProjectDbConnection")));
 
-builder.Services.AddDbContext<ProjectDbIdentityContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("ProjectDbIdentityContextConnection")));
-builder.Services.AddDefaultIdentity<WebAuctionsUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ProjectDbIdentityContext>();
+    builder.Services.AddDbContext<ProjectDbIdentityContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ProjectDbIdentityContextConnection")));
+    builder.Services.AddDefaultIdentity<WebAuctionsUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ProjectDbIdentityContext>();
+}
+else if (databaseProvider == "Sqlite")
+{
+    builder.Services.AddDbContext<ProjectDbContext>(options =>
+        options.UseSqlite(builder.Configuration.GetConnectionString("ProjectDbConnection")));
+    builder.Services.AddDbContext<ProjectDbIdentityContext>(options =>
+        options.UseSqlite(builder.Configuration.GetConnectionString("ProjectDbIdentityContextConnection")));
+    builder.Services.AddDefaultIdentity<WebAuctionsUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ProjectDbIdentityContext>();
+}
 
 builder.Services.AddScoped<IAuctionPersistence, AuctionSqlPersistence>();
 builder.Services.AddScoped<IBidPersistence, BidSqlPersistence>();
