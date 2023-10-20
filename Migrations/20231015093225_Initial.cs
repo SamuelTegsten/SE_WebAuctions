@@ -42,21 +42,6 @@ namespace WebAuctions.Migrations
                     table.PrimaryKey("PK_ItemDBs", x => x.Name);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "UserDBs",
-                columns: table => new
-                {
-                    UserId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Username = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Permission = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserDBs", x => x.UserId);
-                });
-
             migrationBuilder.InsertData(
                 table: "AuctionDBs",
                 columns: new[] { "Id", "Bid", "Date", "Duration", "ItemName", "Status", "Username" },
@@ -66,11 +51,6 @@ namespace WebAuctions.Migrations
                 table: "ItemDBs",
                 columns: new[] { "Name", "Description", "Picture" },
                 values: new object[] { "Garbage", "garbage", "images/garbage.png" });
-
-            migrationBuilder.InsertData(
-                table: "UserDBs",
-                columns: new[] { "UserId", "Password", "Permission", "Username" },
-                values: new object[] { -1, "password", 0, "user" });
         }
 
         /// <inheritdoc />
@@ -81,9 +61,6 @@ namespace WebAuctions.Migrations
 
             migrationBuilder.DropTable(
                 name: "ItemDBs");
-
-            migrationBuilder.DropTable(
-                name: "UserDBs");
         }
     }
 }

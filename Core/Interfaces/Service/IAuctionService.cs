@@ -7,5 +7,6 @@ namespace WebAuctions.Core.Interfaces.Service
         List<Auction> GetAll();
         Auction GetAuctionById(int id);
         List<Auction> GetAuctionsByName(string UserName);
+        int AddAuction(Auction Auction);
     }
 }

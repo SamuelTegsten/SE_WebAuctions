@@ -12,10 +12,12 @@ namespace WebAuctions.Controllers
     {
 
         private readonly IAuctionService auctionService;
+        private readonly IItemService itemService;
 
-        public AuctionPageController(IAuctionService auctionService)
+        public AuctionPageController(IAuctionService auctionService, IItemService itemService)
         {
             this.auctionService = auctionService;
+            this.itemService = itemService;
         }
 
         public IActionResult Index(int id)
@@ -24,11 +26,22 @@ namespace WebAuctions.Controllers
             AuctionVM vm = new();
             vm.Id = id;
             vm.Item = auctions.Item;
-            vm.Duration = auctions.Duration;
-            vm.Status = auctions.Status;
+            vm.ExpirationDate = auctions.ExpirationDate;
             vm.Date = auctions.Date;
             vm.Bid = auctions.Bid;
             return View(vm);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(AuctionVM model)
+        {
+            if (ModelState.IsValid)
+            {
+                itemService.UpdateDescription(model.Item, model.Item.Description);
+                return RedirectToAction("Index", new { id = model.Id });
+            }
+            return View(model);
         }
     }
 }

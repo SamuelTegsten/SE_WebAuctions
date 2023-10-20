@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.Infrastructure;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using WebAuctions.Core.Model;
 
 namespace WebAuctions.Persistence.Context
@@ -10,27 +9,24 @@ namespace WebAuctions.Persistence.Context
 
         public DbSet<AuctionDB> AuctionDBs { get; set; }
         public DbSet<ItemDB> ItemDBs { get; set; }
+        public DbSet<BidDB> BidDBs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<BidDB>()
+                .Property(b => b.BidAmount)
+                .HasColumnType("decimal(18, 2)"); 
+
             modelBuilder.Entity<AuctionDB>().HasData(
                 new AuctionDB
                 {
                     Id = -1,
-                    ItemName = "Large Tent",
-                    Username = "user",
-                    Duration = 3,
+                    ItemName = "testItem",
+                    ExpirationDate = DateTime.Now.AddDays(3),
                     Date = DateTime.Now,
-                    Status = AuctionStatus.Active,
-                    Bid = 50,
-                });
-
-            modelBuilder.Entity<ItemDB>().HasData(
-                new ItemDB
-                {
-                    Picture = "images/tent1.png",
-                    Name = "Large Tent",
-                    Description = "A Large Tent",
+                    AuctionName = "user",
                 });
         }
     }

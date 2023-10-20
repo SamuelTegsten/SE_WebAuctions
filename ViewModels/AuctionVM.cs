@@ -6,11 +6,10 @@ namespace WebAuctions.ViewModels
     {
         public int Id { get; set; }
         public Item Item { get; set; }
-        public int Duration { get; set; }
+        public DateTime ExpirationDate { get; set; }
         public DateTime Date { get; set; }
-        public AuctionStatus Status { get; set; }
-        public double Bid { get; set; }
-        public string Username { get; set; }
+        public List<Bid> Bid { get; set; }
+        public string auctionName { get; set; }
 
         public static AuctionVM FromAuction(Auction auction)
         {
@@ -18,11 +17,10 @@ namespace WebAuctions.ViewModels
             {
                 Id = auction.Id,
                 Item = auction.Item,
-                Duration = auction.Duration,
+                ExpirationDate = auction.ExpirationDate,
                 Date = auction.Date,
-                Status = auction.Status,
                 Bid = auction.Bid,
-                Username = auction.Username
+                auctionName = auction.AuctionName
             };
         }
     }

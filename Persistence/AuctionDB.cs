@@ -1,5 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using WebAuctions.Core.Model;
 
 namespace WebAuctions.Persistence
@@ -12,18 +13,15 @@ namespace WebAuctions.Persistence
         [ForeignKey("Item")]
         public String ItemName { get; set; }
 
-        public string Username { get; set; }
-
-        public int Duration { get; set; }
+        public string AuctionName { get; set; }
 
         [DataType(DataType.DateTime)]
         public DateTime Date { get; set; }
 
-        [EnumDataType(typeof(AuctionStatus))]
-        public AuctionStatus Status { get; set; }
+        [DataType(DataType.DateTime)]
+        public DateTime ExpirationDate { get; set; }
 
-        [MaxLength(128)]
-        public double Bid { get; set; }
-
+        [InverseProperty("Auction")] 
+        public List<BidDB> Bids { get; set; }
     }
 }

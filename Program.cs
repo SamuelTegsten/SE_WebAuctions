@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using WebAuctions.Data;
 using WebAuctions.Areas.Identity.Data;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore.Storage;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,10 +22,11 @@ builder.Services.AddDbContext<ProjectDbIdentityContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("ProjectDbIdentityContextConnection")));
 builder.Services.AddDefaultIdentity<WebAuctionsUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ProjectDbIdentityContext>();
 
-
 builder.Services.AddScoped<IAuctionPersistence, AuctionSqlPersistence>();
+builder.Services.AddScoped<IBidPersistence, BidSqlPersistence>();
 builder.Services.AddScoped<IItemPersistence, ItemSqlPersistence>();
 
+builder.Services.AddScoped<IBidService, BidService>();
 builder.Services.AddScoped<IAuctionService, AuctionService>();
 builder.Services.AddScoped<IItemService, ItemService>();
 

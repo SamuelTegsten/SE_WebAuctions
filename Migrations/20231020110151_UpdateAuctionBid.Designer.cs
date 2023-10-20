@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebAuctions.Persistence.Context;
 
@@ -11,9 +12,11 @@ using WebAuctions.Persistence.Context;
 namespace WebAuctions.Migrations
 {
     [DbContext(typeof(ProjectDbContext))]
-    partial class ProjectDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231020110151_UpdateAuctionBid")]
+    partial class UpdateAuctionBid
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,8 +56,8 @@ namespace WebAuctions.Migrations
                         {
                             Id = -1,
                             AuctionName = "user",
-                            Date = new DateTime(2023, 10, 20, 13, 5, 59, 329, DateTimeKind.Local).AddTicks(6422),
-                            ExpirationDate = new DateTime(2023, 10, 23, 13, 5, 59, 329, DateTimeKind.Local).AddTicks(6383),
+                            Date = new DateTime(2023, 10, 20, 13, 1, 51, 229, DateTimeKind.Local).AddTicks(3901),
+                            ExpirationDate = new DateTime(2023, 10, 23, 13, 1, 51, 229, DateTimeKind.Local).AddTicks(3861),
                             ItemName = "testItem"
                         });
                 });

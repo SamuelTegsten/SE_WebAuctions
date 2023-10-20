@@ -4,21 +4,19 @@
     {
         public int Id { get; set; }
         public Item Item { get; set; }
-        public int Duration { get; set; }
+        public DateTime ExpirationDate { get; set; }
         public DateTime Date { get; set; }
-        public AuctionStatus Status { get; set; }
-        public double Bid { get; set; }
-        public string Username { get; set; }
+        public List<Bid> Bid { get; set; }
+        public string AuctionName { get; set; }
 
-        public Auction(int Id, Item item, int duration, DateTime date, double bid, string username)
+        public Auction(int Id, Item item, DateTime expirationDate, DateTime date, List<Bid> bid, string auctionName)
         {
             this.Id = Id;
             this.Item = item;
-            this.Duration = duration;
+            this.ExpirationDate = expirationDate;
             this.Date = date;
-            this.Status = AuctionStatus.Active;
             this.Bid = bid;
-            this.Username = username;
+            this.AuctionName = auctionName;
         }
     }
 }

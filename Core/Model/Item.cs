@@ -9,9 +9,14 @@
         public Item(string picture, string name, string description)
         {
 
-            Picture = picture;
-            Name = name;
-            Description = description;
+            this.Picture = picture;
+            this.Name = name;
+            this.Description = description;
+        }
+
+        public Item()
+        {
+            // Default constructor with no parameters
         }
     }
 }

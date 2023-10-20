@@ -1,35 +1,44 @@
 <link rel="stylesheet" href="~/css/accountPage.css" asp-append-version="true" />
 @model IEnumerable<WebAuctions.ViewModels.AuctionVM>
 <div class="order-table">
-    <h2>@User.Identity.Name    -   Account Screen</h2>
+    <h2>@User.Identity.Name - Account Screen</h2>
     <h2>Current Auctions</h2>
     <table>
         <thead>
             <tr>
                 <th>Name</th>
                 <th>Current Bid</th>
-                <th>Time left</th>
-                <th>Date</th>
+                <th>Expiration Date</th>
+                <th>Created Date</th>
                 <th>Description</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var auction in Model)
             {
-                @if (auction.Duration > 0)
-            {
+                @if (auction.ExpirationDate >= DateTime.Now)
+                {
                     <tr>
                         <td>@auction.Item.Name</td>
-                        <td>@auction.Bid</td>
-                        <td>@auction.Duration</td>
+                        <td>
+                            @{
+                                var highestBid = auction.Bid.OrderByDescending(b => b.BidAmount).FirstOrDefault();
+                            }
+                            @if (highestBid != null)
+                            {
+                                @highestBid.BidAmount
+                            }
+                        </td>
+                        <td>@(auction.ExpirationDate)</td>
                         <td>@auction.Date</td>
                         <td>@auction.Item.Description</td>
                     </tr>
-                } 
+                }
             }
         </tbody>
     </table>
 
+    <!-- Auctions Won Table -->
     <h2>Auctions Won</h2>
     <table>
         <thead>
@@ -43,14 +52,20 @@
         <tbody>
             @foreach (var auction in Model)
             {
-                @if (auction.Duration <= 0)
+                @if (auction.ExpirationDate <= DateTime.Now)
                 {
-                    <tr>
-                        <td>@auction.Item.Name</td>
-                        <td>@auction.Bid</td>
-                        <td>@auction.Date</td>
-                        <td>@auction.Item.Description</td>
-                    </tr>
+                    
+                    var userBid = auction.Bid.OrderByDescending(b => b.BidAmount).FirstOrDefault(b => b.BidderName == User.Identity.Name);
+
+                    @if (userBid != null)
+                    {
+                        <tr>
+                            <td>@auction.Item.Name</td>
+                            <td>@userBid.BidAmount</td>
+                            <td>@auction.Date</td>
+                            <td>@auction.Item.Description</td>
+                        </tr>
+                    }
                 }
             }
         </tbody>

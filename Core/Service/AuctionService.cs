@@ -11,6 +11,12 @@ namespace WebAuctions.Core.Service
         {
             _auctionPersistence = auctionPersistence;
         }
+
+        public int AddAuction(Auction Auction)
+        {
+            return _auctionPersistence.AddAuction(Auction);
+        }
+
         public List<Auction> GetAll()
         {
             return _auctionPersistence.GetAll();

@@ -2,28 +2,46 @@
 
 <!DOCTYPE html>
 <link rel="stylesheet" href="~/css/auctionPage.css" asp-append-version="true" />
-<div class="auction-container">
+<form class="auction-container">
     <img src="/@Model.Item.Picture" alt="Auction Image" class="auction-image">
     <div class="auction-details">
         <h1 class="auction-title">@Model.Item.Name</h1>
         <p class="auction-description">@Model.Item.Description</p>
-        <p class="auction-bid">Current Bid: $@Model.Bid</p>
-        <p class="auction-duration">Time Left: @Model.Duration</p>
+        @{
+            var highestBid = Model.Bid.OrderByDescending(b => b.BidAmount).FirstOrDefault();
+        }
+        <p class="auction-bid">Current Bid: $@(highestBid != null ? highestBid.BidAmount : 0)</p>
+        <p class="auction-duration">Auction Expires: @Model.ExpirationDate</p>
 
         <!-- Display Previous Bids -->
         <div class="previous-bids">
             <h2 class="previous-bids-title">Previous Bids</h2>
             <ul class="bid-list">
-                <li class="bid-item">Bid 1: $50</li>
-                <li class="bid-item">Bid 2: $75</li>
-                <li class="bid-item">Bid 3: $100</li>
+                @{
+                    var previousBids = Model.Bid.OrderByDescending(b => b.BidAmount).ToList();
+                }
+                @foreach (var bid in previousBids)
+                {
+                    <li class="bid-item">Bid: $@bid.BidAmount</li>
+                }
             </ul>
         </div>
-        <!-- End of Previous Bids -->
     </div>
-    <div class="description-editor">
-        <h2 class="edit-description-title">Edit Description</h2>
-        <input id="description-input" class="description-input" rows="4" placeholder="Add a captivating description of the auction...">
-        <button id="save-description" class="save-button">Save Description</button>
+</form>
+<form asp-action="Create">
+    @Html.AntiForgeryToken()
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        
+        <input type="hidden" asp-for="Item.Name" value="@Model.Item.Name" />
+        <input type="hidden" asp-for="Id" value="@Model.Id" />
+
+        <label asp-for="Item.Description" class="control-label">Enter a New Description</label>
+        <textarea asp-for="Item.Description" class="form-control" placeholder="Enter A New Description">@Model.Item.Description</textarea>
+        <span asp-validation-for="Item.Description" class="text-danger"></span>
     </div>
-</div>
+    <div class="form-group">
+        <input type="submit" value="Update Description" class="btn btn-primary" />
+    </div>
+</form>
+
