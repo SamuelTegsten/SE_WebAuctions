@@ -7,9 +7,8 @@
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Current Bid</th>
+                <th>Highest Bid</th>
                 <th>Expiration Date</th>
-                <th>Created Date</th>
                 <th>Description</th>
             </tr>
         </thead>
@@ -21,7 +20,6 @@
                         <td>@currentAuction.Item.Name</td>
                         <td>$@(currentAuction.getHighestBid())</td>
                         <td>@(currentAuction.ExpirationDate)</td>
-                        <td>@currentAuction.Date</td>
                         <td>@currentAuction.Item.Description</td>
                     </tr>
                 }
