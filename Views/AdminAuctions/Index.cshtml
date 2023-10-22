@@ -45,19 +45,7 @@
                                 <td>@auction.Item.Name</td>
                                 <td>@auction.Auctioneer</td>
                                 <td>@auction.Date</td>
-                                <td>$
-                                    @{
-                                        var bids = auction.Bid;
-                                        decimal max = 0;
-                                        foreach (var bid in bids)
-                                        {
-                                            if (bid.BidAmount > max)
-                                                max = bid.BidAmount;
-                                        }
-                                        @max
-
-
-                                    }
+                                <td>$@auction.getHighestBid()
                                 </td>
                                 <td>
                                     <form asp-action="Delete" class="no-border-form">

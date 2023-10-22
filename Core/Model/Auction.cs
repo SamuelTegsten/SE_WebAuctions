@@ -20,5 +20,22 @@
             this.Bid = bid;
             this.AuctionName = auctionName;
         }
+
+
+        public string getHighestBidder()
+        {
+            decimal max = 0;
+            string maxBidder = "";
+            foreach (var b in Bid)
+            {
+                if (b.BidAmount > max)
+                {
+                    max = b.BidAmount;
+                    maxBidder = b.BidderName;
+                }
+
+            }
+            return maxBidder;
+        }
     }
 }

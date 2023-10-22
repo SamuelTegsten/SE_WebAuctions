@@ -30,5 +30,18 @@ namespace WebAuctions.ViewModels
                 auctionName = auction.AuctionName
             };
         }
+
+        public decimal getHighestBid()
+        {
+            decimal max = 0;
+            foreach(var bid in Bid)
+            {
+                if (bid.BidAmount > max)
+                {
+                    max = bid.BidAmount;
+                }
+            }
+            return max;
+        }
     }
 }

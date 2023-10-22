@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="~/css/accountPage.css" asp-append-version="true" />
-@model IEnumerable<WebAuctions.ViewModels.AuctionVM>
+@model WebAuctions.ViewModels.AccountVM
 <div class="order-table">
     <h2>@User.Identity.Name - Account Screen</h2>
     <h2>Current Auctions</h2>
@@ -14,24 +14,15 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var auction in Model)
+            @foreach (var leadingAuction in Model.Leading)
             {
-                @if (auction.ExpirationDate >= DateTime.Now)
                 {
                     <tr>
-                        <td>@auction.Item.Name</td>
-                        <td>
-                            @{
-                                var highestBid = auction.Bid.OrderByDescending(b => b.BidAmount).FirstOrDefault();
-                            }
-                            @if (highestBid != null)
-                            {
-                                @highestBid.BidAmount
-                            }
-                        </td>
-                        <td>@(auction.ExpirationDate)</td>
-                        <td>@auction.Date</td>
-                        <td>@auction.Item.Description</td>
+                        <td>@leadingAuction.Item.Name</td>
+                        <td>$@(leadingAuction.getHighestBid())</td>
+                        <td>@(leadingAuction.ExpirationDate)</td>
+                        <td>@leadingAuction.Date</td>
+                        <td>@leadingAuction.Item.Description</td>
                     </tr>
                 }
             }
@@ -50,23 +41,15 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var auction in Model)
+            @foreach (var wonAuction in Model.Won)
             {
-                @if (auction.ExpirationDate <= DateTime.Now)
-                {
-                    
-                    var userBid = auction.Bid.OrderByDescending(b => b.BidAmount).FirstOrDefault(b => b.BidderName == User.Identity.Name);
+                <tr>
+                    <td>@wonAuction.Item.Name</td>
+                    <td>$@wonAuction.getHighestBid()</td>
+                    <td>@wonAuction.ExpirationDate</td>
+                    <td>@wonAuction.Item.Description</td>
+                </tr>
 
-                    @if (userBid != null)
-                    {
-                        <tr>
-                            <td>@auction.Item.Name</td>
-                            <td>@userBid.BidAmount</td>
-                            <td>@auction.Date</td>
-                            <td>@auction.Item.Description</td>
-                        </tr>
-                    }
-                }
             }
         </tbody>
     </table>

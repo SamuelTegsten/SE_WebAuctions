@@ -16,6 +16,7 @@ namespace WebAuctions.Core.Model
             this.BidAmount = bidAmount;
             this.BidPlacedTime = bidPlacedTime;
         }
+
     }
 }
 
