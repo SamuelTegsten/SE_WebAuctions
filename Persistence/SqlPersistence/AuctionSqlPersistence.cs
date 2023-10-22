@@ -25,6 +25,7 @@ namespace WebAuctions.Persistence.SqlPersistence
                     AuctionName = auction.AuctionName,
                     Date = auction.Date,
                     ExpirationDate = auction.ExpirationDate,
+                    Auctioneer = auction.Auctioneer,
                 };
 
                 _dbContext.AuctionDBs.Add(auctionDB);
@@ -52,6 +53,7 @@ namespace WebAuctions.Persistence.SqlPersistence
 
                 var auction = new Auction(
                     act.Id,
+                    act.Auctioneer,
                     item,
                     act.ExpirationDate,
                     act.Date,
@@ -63,6 +65,54 @@ namespace WebAuctions.Persistence.SqlPersistence
             }
 
             return result;
+        }
+
+
+        public int DeleteAuctionById(int id)
+        {
+            var auction = _dbContext.AuctionDBs
+                .FirstOrDefault(a=> a.Id == id);
+            if (auction!=null)
+            {
+                _dbContext.AuctionDBs.Remove(auction);
+            }
+            _dbContext.SaveChanges();
+
+
+            return id;
+        }
+
+        public List<Auction> GetAuctionByUserName(string auctioneer)
+        {
+            var auctionDbs = _dbContext.AuctionDBs
+                .Include(a => a.Bids)
+                .Where(a => a.Auctioneer == auctioneer)
+                .ToList();
+
+            List<Auction> result = new List<Auction>();
+
+            if(auctionDbs != null)
+            {
+                foreach (AuctionDB act in auctionDbs)
+                {
+                    Item item = GetItem(act.ItemName);
+
+                    var auction = new Auction(
+                        act.Id,
+                        act.Auctioneer,
+                        item,
+                        act.ExpirationDate,
+                        act.Date,
+                        act.Bids.Select(b => new Bid(b.Id, b.BidderName, b.BidAmount, b.BidPlacedTime)).ToList(),
+                        act.AuctionName
+                    );
+
+                    result.Add(auction);
+                }
+
+                return result;
+            }
+              throw new InvalidOperationException("Auction not found");
         }
 
 
@@ -78,6 +128,7 @@ namespace WebAuctions.Persistence.SqlPersistence
 
                 var auction = new Auction(
                     auctionDb.Id,
+                    auctionDb.Auctioneer,
                     item,
                     auctionDb.ExpirationDate,
                     auctionDb.Date,
@@ -107,6 +158,7 @@ namespace WebAuctions.Persistence.SqlPersistence
 
                 var auction = new Auction(
                     auctionDb.Id,
+                    auctionDb.Auctioneer,
                     item,
                     auctionDb.ExpirationDate,
                     auctionDb.Date,

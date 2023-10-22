@@ -10,6 +10,8 @@ namespace WebAuctions.Persistence
         [Key]
         public int Id { get; set; }
 
+        public string Auctioneer { get; set; }
+
         [ForeignKey("Item")]
         public String ItemName { get; set; }
 

@@ -1,54 +1,51 @@
-﻿<!DOCTYPE html>
+﻿@model IEnumerable<WebAuctions.ViewModels.UserVM>
+
+
+<!DOCTYPE html>
 <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
 <div class="container">
-    <h2>Admin Panel</h2>
+    <h2>Manage Users</h2>
 
-    <!-- Add Auction Section -->
-    <div class="add_auction">
-        <h3>Add Auction</h3>
-        <form action="">
-            <!-- Input fields for adding an auction -->
-            <input type="hidden" name="action" value="addAuction">
-            <input type="text" name="addAuctionName" placeholder="Auction Name" required>
-            <input type="number" name="addAuctionBid" placeholder="Starting Bid" required>
-            <input type="number" name="addAuctionDuration" placeholder="Duration (in minutes)" required>
-            <button type="submit">Add</button>
-        </form>
-        <!-- Display the action result message -->
-        <p></p>
-    </div>
 
-    <!-- Remove Auction Section -->
-    <div class="remove_auction">
-        <h3>Remove Auction</h3>
-        <form action="">
-            <!-- Input fields for removing an auction -->
-            <input type="hidden" name="action" value="removeAuction">
-            <input type="text" name="removeAuctionName" placeholder="Auction Name" required>
-            <button type="submit">Remove</button>
-        </form>
-        <!-- Display the action result message -->
-        <p></p>
-    </div>
+    <!-- User Table -->
+    <div class="user_table">
+        <!-- Center the "Load Users" button -->
+        <div style="text-align: center;">
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Role</th>
+                </tr>
+            </thead>
+            <tbody>
 
-    <!-- Add User Section -->
-    <div class="add_user">
-        <h3>Add User</h3>
-        <form action="">
-            <!-- Input fields for adding a user -->
-            <input type="hidden" name="action" value="addUser">
-            <input type="text" name="addUserUsername" placeholder="Username" required>
-            <input type="password" name="addUserPassword" placeholder="Password" required>
-            <button type="submit">Add</button>
-        </form>
-        <!-- Display the action result message -->
-        <p></p>
+                @for (var i = 0; i < Model.Count(); i++)
+                {
+                    var user = Model.ElementAt(i);
+                    var roles = user.Roles;
+                    string rolesString = "";
+                    for (int j = 0; j < roles.Count; j++)
+                    {
+                        if (j + 1 != roles.Count)
+                            rolesString += roles[j] + ", ";
+                        else
+                            rolesString += roles[j];
+                    }
+                    <tr>
+                        <td>@user.UserName</td>
+                        <td>@rolesString</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
 
     <!-- Remove User Section -->
     <div class="remove_user">
         <h3>Remove User</h3>
-        <form action="">
+        <form asp-action="Index">
             <!-- Input fields for removing a user -->
             <input type="hidden" name="action" value="removeUser">
             <input type="text" name="removeUserUsername" placeholder="Username" required>
@@ -58,70 +55,5 @@
         <p></p>
     </div>
 
-    <!-- Add Admin Section -->
-    <div class="add_admin">
-        <h3>Add Admin</h3>
-        <form action="">
-            <!-- Input fields for adding an admin -->
-            <input type="hidden" name="action" value="addAdmin">
-            <input type="text" name="addAdminUsername" placeholder="Username" required>
-            <input type="password" name="addAdminPassword" placeholder="Password" required>
-            <button type="submit">Add</button>
-        </form>
-        <!-- Display the action result message -->
-        <p></p>
-    </div>
 
-    <!-- Remove Admin Section -->
-    <div class="remove_admin">
-        <h3>Remove Admin</h3>
-        <form action="">
-            <!-- Input fields for removing an admin -->
-            <input type="hidden" name="action" value="removeAdmin">
-            <input type="text" name="removeAdminUsername" placeholder="Username" required>
-            <input type="text" name="removeAdminPassword" placeholder="Password" required>
-            <button type="submit">Remove</button>
-        </form>
-        <!-- Display the action result message -->
-        <p></p>
-    </div>
-
-    <!-- User Table -->
-    <div class="user_table">
-        <h3>User Table</h3>
-        <!-- Center the "Load Users" button -->
-        <div style="text-align: center;">
-        </div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Username</th>
-                    <th>Permission</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-    </div>
-
-    <!-- Auction Table -->
-    <div class="user_table">
-        <h3>User Auctions</h3>
-        <!-- Center the "Load Users" button -->
-        <div style="text-align: center;">
-        </div>
-        <table>
-            <thead>
-                <tr>
-                    <th>User</th>
-                    <th>Name</th>
-                    <th>Bid</th>
-                    <th>Time left</th>
-                    <th>Date</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-    </div>
 </div>

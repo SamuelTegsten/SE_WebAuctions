@@ -1,0 +1,78 @@
+﻿@model IEnumerable<WebAuctions.ViewModels.AuctionVM>
+
+
+<!DOCTYPE html>
+<link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
+<div class="container">
+    <h2>Admin Auctions</h2>
+
+
+    <!-- Search User projects Section -->
+    <div class="add_auction">
+        <form asp-action="Index">
+            <!-- Input fields for username -->
+            <input type="text" name="searchUsername" placeholder="Search auctions by username">
+            <button type="submit" name="action" value="searchUser">Search Auctions</button>
+            <button type="submit" name="action" value="showAll">Show All</button>
+        </form>
+        <!-- Display the action result message -->
+        <p></p>
+
+        <div class="user_table">
+            <h3>User Auctions</h3>
+            <!-- Center the "Load Users" button -->
+            <div style="text-align: center;">
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Name</th>
+                        <th>User</th>
+                        <th>Expiration</th>
+                        <th>Highest Bid</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        @for (var i = 0; i < Model.Count(); i++)
+                        {
+                            var auction = Model.ElementAt(i);
+                            <tr>
+                                <td><img src="/@auction.Item.Picture" alt="Auction Image" class="item-image"></td>
+                                <td>@auction.Item.Name</td>
+                                <td>@auction.Auctioneer</td>
+                                <td>@auction.Date</td>
+                                <td>$
+                                    @{
+                                        var bids = auction.Bid;
+                                        decimal max = 0;
+                                        foreach (var bid in bids)
+                                        {
+                                            if (bid.BidAmount > max)
+                                                max = bid.BidAmount;
+                                        }
+                                        @max
+
+
+                                    }
+                                </td>
+                                <td>
+                                    <form asp-action="Delete" class="no-border-form">
+                                        <input type="hidden" name="auctionId" value="@auction.Id" />
+                                        <input class="delete-button" type="image" src="~/images/garbage.png" alt="Delete" />
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+   
+</div>

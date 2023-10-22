@@ -5,6 +5,6 @@ namespace WebAuctions.Core.Interfaces.Service
     public interface IItemService
     {
         bool AddItem(Item item);
-        bool UpdateDescription(Item item, string newDescription);
+        bool UpdateDescription(string itemName, string newDescription);
     }
 }

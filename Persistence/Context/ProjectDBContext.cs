@@ -17,7 +17,7 @@ namespace WebAuctions.Persistence.Context
 
             modelBuilder.Entity<BidDB>()
                 .Property(b => b.BidAmount)
-                .HasColumnType("decimal(18, 2)"); 
+                .HasColumnType("decimal(18, 2)");
 
             modelBuilder.Entity<AuctionDB>().HasData(
                 new AuctionDB
@@ -27,6 +27,7 @@ namespace WebAuctions.Persistence.Context
                     ExpirationDate = DateTime.Now.AddDays(3),
                     Date = DateTime.Now,
                     AuctionName = "user",
+                    Auctioneer = "Reine"
                 });
             modelBuilder.Entity<ItemDB>().HasData(
                 new ItemDB

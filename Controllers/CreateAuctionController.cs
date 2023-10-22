@@ -44,6 +44,7 @@ namespace WebAuctions.Controllers
             {
                 var auction = new Auction(
                     0,
+                    userName,
                     new Item("images/" + model.Picture, model.AuctionName, model.Description),
                     model.ExpirationDate,
                     DateTime.Now,

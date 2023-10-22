@@ -5,21 +5,28 @@ namespace WebAuctions.ViewModels
     public class AuctionVM
     {
         public int Id { get; set; }
-        public Item Item { get; set; }
+        public string Auctioneer { get; set; }
+        public ItemVM Item { get; set; }
         public DateTime ExpirationDate { get; set; }
         public DateTime Date { get; set; }
-        public List<Bid> Bid { get; set; }
+        public List<BidVM> Bid { get; set; }
         public string auctionName { get; set; }
 
         public static AuctionVM FromAuction(Auction auction)
         {
+            List<BidVM> tempBid = new List<BidVM>();
+            foreach(var b in auction.Bid)
+            {
+                tempBid.Add(BidVM.FromBid(b));
+            }
             return new AuctionVM()
             {
                 Id = auction.Id,
-                Item = auction.Item,
+                Auctioneer = auction.Auctioneer,
+                Item = ItemVM.FromItem(auction.Item),
                 ExpirationDate = auction.ExpirationDate,
                 Date = auction.Date,
-                Bid = auction.Bid,
+                Bid = tempBid,
                 auctionName = auction.AuctionName
             };
         }

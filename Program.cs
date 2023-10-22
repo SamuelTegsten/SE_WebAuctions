@@ -42,6 +42,8 @@ builder.Services.AddScoped<IBidService, BidService>();
 builder.Services.AddScoped<IAuctionService, AuctionService>();
 builder.Services.AddScoped<IItemService, ItemService>();
 
+builder.Services.AddScoped<UserManager<WebAuctionsUser>>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

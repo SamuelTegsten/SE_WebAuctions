@@ -68,6 +68,7 @@ table {
     margin-top: 30px;
     width: 100%;
     border-collapse: collapse;
+
 }
 
 /* Style for table headers and table data cells */
@@ -85,4 +86,41 @@ th, td {
 th {
     background-color: #14611f;
     color: #fff;
+}
+
+/* Style for table data cells with a background color */
+td {
+    background-color: white;
+}
+
+.delete-button {
+    width: 23px; /* Adjust the width to your preferred size */
+    height: 23px; /* Adjust the height to your preferred size */
+    cursor: pointer; /* Add a pointer cursor to indicate it's clickable */
+    border: none !important;
+}
+
+.item-image {
+    width: 100px; /* Set the desired width */
+    height: 100px; /* Set the desired height */
+}
+
+/* Style for the search button */
+.search-button {
+    background: none;
+    border: none;
+    color: blue; /* Text color for the button */
+    cursor: pointer; /* Show a hand cursor on hover */
+}
+
+/* Style for the "Show All" button */
+.show-all-button {
+    background: none;
+    border: none;
+    color: green; /* Text color for the button */
+    cursor: pointer; /* Show a hand cursor on hover */
+}
+
+.no-border-form {
+    border: none; /* Remove the border from the form */
 }

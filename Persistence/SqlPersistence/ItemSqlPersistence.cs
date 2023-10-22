@@ -35,11 +35,11 @@ namespace WebAuctions.Persistence.SqlPersistence
             }
         }
 
-        public bool UpdateDescription(Item item, string newDescription)
+        public bool UpdateDescription(string itemName, string newDescription)
         {
             try
             {
-                var existingItem = _dbContext.ItemDBs.FirstOrDefault(i => i.Name == item.Name);
+                var existingItem = _dbContext.ItemDBs.FirstOrDefault(i => i.Name == itemName);
 
                 if (existingItem != null)
                 {

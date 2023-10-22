@@ -22,13 +22,20 @@ namespace WebAuctions.Controllers
 
         public IActionResult Index(int id)
         {
+
             Auction auctions = auctionService.GetAuctionById(id);
+            List<BidVM> tempBid = new List<BidVM>();
+            foreach (var b in auctions.Bid)
+            {
+                tempBid.Add(BidVM.FromBid(b));
+            }
+
             AuctionVM vm = new();
             vm.Id = id;
-            vm.Item = auctions.Item;
+            vm.Item = ItemVM.FromItem(auctions.Item);
             vm.ExpirationDate = auctions.ExpirationDate;
             vm.Date = auctions.Date;
-            vm.Bid = auctions.Bid;
+            vm.Bid = tempBid;
             return View(vm);
         }
 
@@ -36,7 +43,7 @@ namespace WebAuctions.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(AuctionVM model)
         {
-            itemService.UpdateDescription(model.Item, model.Item.Description);
+            itemService.UpdateDescription(model.Item.Name, model.Item.Description);
             return RedirectToAction("Index", new { id = model.Id });
         }
     }

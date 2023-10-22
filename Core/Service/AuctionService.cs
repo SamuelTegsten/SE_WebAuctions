@@ -21,6 +21,11 @@ namespace WebAuctions.Core.Service
         {
             return _auctionPersistence.GetAll();
         }
+        public List<Auction> GetAuctionByUserName(string auctioneer)
+        {
+            return _auctionPersistence.GetAuctionByUserName(auctioneer);
+        }
+
 
         public Auction GetAuctionById(int id)
         {
@@ -31,5 +36,12 @@ namespace WebAuctions.Core.Service
         {
             return _auctionPersistence.GetAuctionsByName(UserName);
         }
+
+        public int DeleteAuctionById(int id)
+        {
+            return _auctionPersistence.DeleteAuctionById(id);
+        }
+
+
     }
 }

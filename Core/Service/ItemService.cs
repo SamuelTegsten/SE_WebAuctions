@@ -17,9 +17,9 @@ namespace WebAuctions.Core.Service
             return _itemPersistence.AddItem(item);
         }
 
-        public bool UpdateDescription(Item item, string newDescription)
+        public bool UpdateDescription(string itemName, string newDescription)
         {
-            return _itemPersistence.UpdateDescription(item, newDescription);
+            return _itemPersistence.UpdateDescription(itemName, newDescription);
         }
     }
 }
