@@ -14,15 +14,15 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var leadingAuction in Model.Leading)
+            @foreach (var currentAuction in Model.Current)
             {
                 {
                     <tr>
-                        <td>@leadingAuction.Item.Name</td>
-                        <td>$@(leadingAuction.getHighestBid())</td>
-                        <td>@(leadingAuction.ExpirationDate)</td>
-                        <td>@leadingAuction.Date</td>
-                        <td>@leadingAuction.Item.Description</td>
+                        <td>@currentAuction.Item.Name</td>
+                        <td>$@(currentAuction.getHighestBid())</td>
+                        <td>@(currentAuction.ExpirationDate)</td>
+                        <td>@currentAuction.Date</td>
+                        <td>@currentAuction.Item.Description</td>
                     </tr>
                 }
             }

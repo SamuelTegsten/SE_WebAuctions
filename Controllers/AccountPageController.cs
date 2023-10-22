@@ -22,39 +22,54 @@ namespace WebAuctions.Controllers
             AccountVM result = new AccountVM();
             
 
-            //Leading auctions
             string userName = User.Identity.Name;
             List<Auction> auctions = auctionService.GetAll();
-            List<Auction> leading = new List<Auction>();
+            List<Auction> current = new List<Auction>();
             List<Auction> won = new List<Auction>();
+            //current auctions
+            foreach(var a in auctions)
+            {
+
+                if (a.ExpirationDate > DateTime.Now)
+                {
+                    foreach (var b in a.Bid)
+                    {
+                        if (b.BidderName == userName)
+                        {
+                            current.Add(a);
+                            break;
+                        }
+                    }
+                }
+
+            }
+
+
+            //won auctions
             string highest = "";
             foreach(var a in auctions)
             {
                 highest = a.getHighestBidder();
                 if(highest == userName)
                 {
-                    if (a.ExpirationDate > DateTime.Now)
-                    {
-                        leading.Add(a);
-                    }
-                    else
+                    if (a.ExpirationDate <=DateTime.Now)
                     {
                         won.Add(a);
                     }
                 }
             }
 
-            List <AuctionVM> leadingVm = new ();
-            foreach (var auction in leading)
+            List <AuctionVM> currentVm = new ();
+            foreach (var auction in current)
             {
-                leadingVm.Add(AuctionVM.FromAuction(auction));
+                currentVm.Add(AuctionVM.FromAuction(auction));
             }
             List<AuctionVM> wonVm = new();
             foreach (var auction in won)
             {
                 wonVm.Add(AuctionVM.FromAuction(auction));
             }
-            result.Leading = leadingVm;
+            result.Current = currentVm;
             result.Won = wonVm;
             return View(result);
         }
