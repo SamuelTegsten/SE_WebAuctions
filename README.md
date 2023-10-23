@@ -9,10 +9,12 @@
   Get started with the WebAuctions application by visiting the web page. This application offers a wide range of features to facilitate your online auctions:
 </p>
 
+<p align="center">
 - **🔗 User Management:** Register and log in to access the system and manage your user profile.
 - **🛒 Auctions:** Create new auctions, view available auctions, and place bids.
 - **🏆 Auction History:** View the auctions you've created and the ones you've won.
 - **🔧 Admin Features:** Admins can manage users and auctions, including removal if necessary.
+</p>
 
 ## How It Works
 
@@ -26,11 +28,13 @@
   The WebAuctions project utilizes the following technologies:
 </p>
 
+<p align="center">
 - .NET Core
 - ASP.NET Core MVC
 - Entity Framework Core
 - SQL Server
 - Identity Framework
+</p>
 
 ## Contributors
 
@@ -38,8 +42,10 @@
   Contributors to the WebAuctions project:
 </p>
 
+<p align="center">
 - Samuel Tegsten
 - Esteban Masaya
+</p>
 
 ## Video
 
