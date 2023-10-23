@@ -10,9 +10,11 @@ namespace WebAuctions.Persistence.SqlPersistence
     public class AuctionSqlPersistence : IAuctionPersistence
     {
         private ProjectDbContext _dbContext;
-        public AuctionSqlPersistence(ProjectDbContext dbContext) 
+        private UnitOfWork _unitOfWork;
+        public AuctionSqlPersistence(ProjectDbContext dbContext, UnitOfWork unitOfWork)
         {
             _dbContext = dbContext;
+            _unitOfWork = unitOfWork;
         }
 
         public int AddAuction(Auction auction)
@@ -39,17 +41,16 @@ namespace WebAuctions.Persistence.SqlPersistence
             }
         }
 
+
+
         public List<Auction> GetAll()
         {
-            var auctionDbs = _dbContext.AuctionDBs
-                .Include(a => a.Bids)
-                .ToList();
-
+            List<AuctionDB> auctionDbs = (List<AuctionDB>)_unitOfWork.AuctionRepository.Get(includeProperties: "Bids");
             List<Auction> result = new List<Auction>();
 
             foreach (AuctionDB act in auctionDbs)
             {
-                Item item = GetItem(act.ItemName); 
+                Item item = GetItem(act.ItemName);
 
                 var auction = new Auction(
                     act.Id,
@@ -57,14 +58,16 @@ namespace WebAuctions.Persistence.SqlPersistence
                     item,
                     act.ExpirationDate,
                     act.Date,
-                    act.Bids.Select(b => new Bid(b.Id, b.BidderName, b.BidAmount, b.BidPlacedTime)).ToList(), 
-                    act.AuctionName 
+                    act.Bids.Select(b => new Bid(b.Id, b.BidderName, b.BidAmount, b.BidPlacedTime)).ToList(),
+                    act.AuctionName
                 );
 
                 result.Add(auction);
             }
 
+
             return result;
+
         }
 
 

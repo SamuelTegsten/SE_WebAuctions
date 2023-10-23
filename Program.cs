@@ -9,6 +9,7 @@ using WebAuctions.Data;
 using WebAuctions.Areas.Identity.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore.Storage;
+using WebAuctions.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,6 +44,7 @@ builder.Services.AddScoped<IAuctionService, AuctionService>();
 builder.Services.AddScoped<IItemService, ItemService>();
 
 builder.Services.AddScoped<UserManager<WebAuctionsUser>>();
+builder.Services.AddScoped<UnitOfWork>(); 
 
 var app = builder.Build();
 

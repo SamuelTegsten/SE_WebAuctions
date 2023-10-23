@@ -4,6 +4,7 @@ namespace WebAuctions.Core.Interfaces.Service
 {
     public interface IAuctionService
     {
+
         List<Auction> GetAll();
         public List<Auction> GetUsersOngoingAuctions(string username, DateTime now);
         public List<Auction> GetUsersWonAuctions(string username, DateTime now);
@@ -12,6 +13,8 @@ namespace WebAuctions.Core.Interfaces.Service
         public List<Auction> GetAuctionByUserName(string auctioneer);
         int AddAuction(Auction Auction);
         public int DeleteAuctionById(int id);
+
+
 
     }
 }
