@@ -30,8 +30,8 @@ namespace WebAuctions.Persistence.SqlPersistence
                     Auctioneer = auction.Auctioneer,
                 };
 
-                _dbContext.AuctionDBs.Add(auctionDB);
-                _dbContext.SaveChanges();
+                _unitOfWork.AuctionRepository.Insert(auctionDB);
+                _unitOfWork.Save();
 
                 return auctionDB.Id;
             }
@@ -41,50 +41,17 @@ namespace WebAuctions.Persistence.SqlPersistence
             }
         }
 
-
-
-        public List<Auction> GetAll()
-        {
-            List<AuctionDB> auctionDbs = (List<AuctionDB>)_unitOfWork.AuctionRepository.Get(includeProperties: "Bids");
-            List<Auction> result = new List<Auction>();
-
-            foreach (AuctionDB act in auctionDbs)
-            {
-                Item item = GetItem(act.ItemName);
-
-                var auction = new Auction(
-                    act.Id,
-                    act.Auctioneer,
-                    item,
-                    act.ExpirationDate,
-                    act.Date,
-                    act.Bids.Select(b => new Bid(b.Id, b.BidderName, b.BidAmount, b.BidPlacedTime)).ToList(),
-                    act.AuctionName
-                );
-
-                result.Add(auction);
-            }
-
-
-            return result;
-
-        }
-
-
-
         public List<Auction> GetUsersOngoingAuctions(string username, DateTime now)
         {
-            var auctionDbs = _dbContext.AuctionDBs
-                .Include(a => a.Bids)
-                .Where(a => a.ExpirationDate > now && a.Bids.Any(b => b.BidderName == username))
-                .ToList();
+            var auctionDbs = _unitOfWork.AuctionRepository.Get(
+                filter: a => a.ExpirationDate > now && a.Bids.Any(b => b.BidderName == username),
+                includeProperties: "Bids"
+            );
 
             List<Auction> result = new List<Auction>();
-
             foreach (AuctionDB act in auctionDbs)
             {
                 Item item = GetItem(act.ItemName);
-
                 var auction = new Auction(
                     act.Id,
                     act.Auctioneer,
@@ -94,23 +61,18 @@ namespace WebAuctions.Persistence.SqlPersistence
                     act.Bids.Select(b => new Bid(b.Id, b.BidderName, b.BidAmount, b.BidPlacedTime)).ToList(),
                     act.AuctionName
                 );
-
                 result.Add(auction);
             }
-
             return result;
-
-
         }
-
-
-
         public List<Auction> GetUsersWonAuctions(string username, DateTime now)
         {
-            var result = _dbContext.AuctionDBs
-                .Include(a => a.Bids)
-                .Where(a => a.ExpirationDate <= now)
-                .ToList()
+            var auctions = _unitOfWork.AuctionRepository.Get(
+                filter: a => a.ExpirationDate <= now,
+                includeProperties: "Bids"
+            );
+
+            var result = auctions
                 .Where(a => a.Bids.Any(b => b.BidderName == username && b.BidAmount == a.Bids.Max(maxBid => maxBid.BidAmount)))
                 .Select(auctionDB => new Auction(
                     auctionDB.Id,
@@ -124,36 +86,57 @@ namespace WebAuctions.Persistence.SqlPersistence
                 .ToList();
 
             return result;
+        }
 
+        public List<Auction> GetAll()
+        {
+            var auctions = _unitOfWork.AuctionRepository.Get(includeProperties: "Bids");
+            var result = new List<Auction>();
+
+            foreach (var auctionDb in auctions)
+            {
+                Item item = GetItem(auctionDb.ItemName);
+
+                var auction = new Auction(
+                    auctionDb.Id,
+                    auctionDb.Auctioneer,
+                    item,
+                    auctionDb.ExpirationDate,
+                    auctionDb.Date,
+                    auctionDb.Bids.Select(b => new Bid(b.Id, b.BidderName, b.BidAmount, b.BidPlacedTime)).ToList(),
+                    auctionDb.AuctionName
+                );
+
+                result.Add(auction);
+            }
+
+            return result;
         }
 
 
         public int DeleteAuctionById(int id)
         {
-            var auction = _dbContext.AuctionDBs
-                .FirstOrDefault(a=> a.Id == id);
-            if (auction!=null)
+            var auction = _unitOfWork.AuctionRepository.GetByID(id);
+            if (auction != null)
             {
-                _dbContext.AuctionDBs.Remove(auction);
+                _unitOfWork.AuctionRepository.Delete(auction);
+                _unitOfWork.Save();
             }
-            _dbContext.SaveChanges();
-
 
             return id;
         }
 
         public List<Auction> GetAuctionByUserName(string auctioneer)
         {
-            var auctionDbs = _dbContext.AuctionDBs
-                .Include(a => a.Bids)
-                .Where(a => a.Auctioneer == auctioneer)
-                .ToList();
+            var auctions = _unitOfWork.AuctionRepository.Get(
+                filter: a => a.Auctioneer == auctioneer,
+                includeProperties: "Bids"
+            );
 
-            List<Auction> result = new List<Auction>();
-
-            if(auctionDbs != null)
+            if (auctions != null)
             {
-                foreach (AuctionDB act in auctionDbs)
+                List<Auction> result = new List<Auction>();
+                foreach (AuctionDB act in auctions)
                 {
                     Item item = GetItem(act.ItemName);
 
@@ -172,9 +155,9 @@ namespace WebAuctions.Persistence.SqlPersistence
 
                 return result;
             }
-              throw new InvalidOperationException("Auction not found");
-        }
 
+            throw new InvalidOperationException("Auction not found");
+        }
 
         public Auction GetAuctionById(int id)
         {
@@ -205,16 +188,16 @@ namespace WebAuctions.Persistence.SqlPersistence
 
         public List<Auction> GetAuctionsByName(string userName)
         {
-            var auctionDbs = _dbContext.AuctionDBs
-                .Include(a => a.Bids)
-                .Where(a => a.Bids.Any(b => b.BidderName == userName))
-                .ToList();
+            var auctions = _unitOfWork.AuctionRepository.Get(
+                filter: a => a.Bids.Any(b => b.BidderName == userName),
+                includeProperties: "Bids"
+            );
 
             var result = new List<Auction>();
 
-            foreach (var auctionDb in auctionDbs)
+            foreach (var auctionDb in auctions)
             {
-                Item item = GetItem(auctionDb.ItemName); 
+                Item item = GetItem(auctionDb.ItemName);
 
                 var auction = new Auction(
                     auctionDb.Id,
@@ -222,8 +205,8 @@ namespace WebAuctions.Persistence.SqlPersistence
                     item,
                     auctionDb.ExpirationDate,
                     auctionDb.Date,
-                    auctionDb.Bids.Select(b => new Bid(b.Id, b.BidderName, b.BidAmount, b.BidPlacedTime)).ToList(), 
-                    auctionDb.AuctionName 
+                    auctionDb.Bids.Select(b => new Bid(b.Id, b.BidderName, b.BidAmount, b.BidPlacedTime)).ToList(),
+                    auctionDb.AuctionName
                 );
 
                 result.Add(auction);
@@ -231,7 +214,6 @@ namespace WebAuctions.Persistence.SqlPersistence
 
             return result;
         }
-
 
         private Item GetItem(string ItemName)
         {
