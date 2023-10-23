@@ -11,12 +11,10 @@ namespace WebAuctions.Persistence.SqlPersistence
 {
     public class BidSqlPersistence : IBidPersistence
     {
-        private ProjectDbContext _dbContext;
         private UnitOfWork _unitOfWork;
 
-        public BidSqlPersistence(ProjectDbContext dbContext, UnitOfWork unitOfWork)
+        public BidSqlPersistence(UnitOfWork unitOfWork)
         {
-            _dbContext = dbContext;
             _unitOfWork = unitOfWork;
         }
 

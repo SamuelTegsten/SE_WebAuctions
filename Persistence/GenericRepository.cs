@@ -44,7 +44,7 @@ namespace WebAuctions.Persistence
             }
         }
 
-        public virtual TEntity GetByID(object id)
+        public virtual TEntity GetByID(object id, string includeProperties = "")
         {
             return dbSet.Find(id);
         }

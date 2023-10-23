@@ -23,6 +23,8 @@ namespace WebAuctions.Persistence
         [DataType(DataType.DateTime)]
         public DateTime ExpirationDate { get; set; }
 
+        public ItemDB Item { get; set; }
+
         [InverseProperty("Auction")] 
         public List<BidDB> Bids { get; set; }
     }

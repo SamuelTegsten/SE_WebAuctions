@@ -19,6 +19,11 @@ namespace WebAuctions.Persistence.Context
                 .Property(b => b.BidAmount)
                 .HasColumnType("decimal(18, 2)");
 
+            modelBuilder.Entity<AuctionDB>()
+                .HasOne(a => a.Item)
+                .WithMany()
+                .HasForeignKey(a => a.ItemName);
+
             modelBuilder.Entity<AuctionDB>().HasData(
                 new AuctionDB
                 {

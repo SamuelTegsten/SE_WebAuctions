@@ -55,7 +55,6 @@ namespace WebAuctions.Controllers
                 System.Diagnostics.Debug.WriteLine("AuctionId: " + auctionId);
 
                 bidService.addBid(new Bid(auctionId, userName, model.Price, DateTime.Now));
-                itemService.AddItem(new Item(model.Picture, model.AuctionName, model.Description));
                 return RedirectToAction("Index");
             }
             return View(model);

@@ -11,5 +11,20 @@ namespace WebAuctions.Persistence
 
         [MaxLength(256)]
         public string Description { get; set; }
+
+        public ItemDB()
+        {
+        }
+
+        [Obsolete]
+        public ItemDB(string picture, string name, string description)
+        {
+            Picture = picture;
+            Name = name;
+            Description = description;
+        }
+
     }
+
+
 }
