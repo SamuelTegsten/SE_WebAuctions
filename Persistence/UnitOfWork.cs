@@ -15,8 +15,7 @@ namespace WebAuctions.Persistence
 
         private GenericRepository<AuctionDB> auctionRepository;
         private GenericRepository<BidDB> bidRepository;
-
-
+        private GenericRepository<ItemDB> itemRepository;
 
         public GenericRepository<AuctionDB> AuctionRepository
         {
@@ -34,12 +33,23 @@ namespace WebAuctions.Persistence
         {
             get
             {
-
                 if (this.bidRepository == null)
                 {
                     this.bidRepository = new GenericRepository<BidDB>(context);
                 }
                 return bidRepository;
+            }
+        }
+
+        public GenericRepository<ItemDB> ItemRepository
+        {
+            get
+            {
+                if (this.itemRepository == null)
+                {
+                    this.itemRepository = new GenericRepository<ItemDB>(context);
+                }
+                return itemRepository;
             }
         }
 
@@ -69,4 +79,3 @@ namespace WebAuctions.Persistence
         }
     }
 }
-

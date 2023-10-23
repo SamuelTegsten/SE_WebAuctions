@@ -2,15 +2,20 @@
 using WebAuctions.Core.Interfaces.Persistence;
 using WebAuctions.Core.Model;
 using WebAuctions.Persistence.Context;
+using System;
+using System.Linq;
 
 namespace WebAuctions.Persistence.SqlPersistence
 {
     public class ItemSqlPersistence : IItemPersistence
     {
         private ProjectDbContext _dbContext;
-        public ItemSqlPersistence(ProjectDbContext dbContext)
+        private UnitOfWork _unitOfWork;
+
+        public ItemSqlPersistence(ProjectDbContext dbContext, UnitOfWork unitOfWork)
         {
             _dbContext = dbContext;
+            _unitOfWork = unitOfWork;
         }
 
         public bool AddItem(Item item)
@@ -24,8 +29,8 @@ namespace WebAuctions.Persistence.SqlPersistence
                     Description = item.Description
                 };
 
-                _dbContext.ItemDBs.Add(itemDB);
-                _dbContext.SaveChanges();
+                _unitOfWork.ItemRepository.Insert(itemDB);
+                _unitOfWork.Save();
 
                 return true;
             }
@@ -39,12 +44,12 @@ namespace WebAuctions.Persistence.SqlPersistence
         {
             try
             {
-                var existingItem = _dbContext.ItemDBs.FirstOrDefault(i => i.Name == itemName);
+                var existingItem = _unitOfWork.ItemRepository.Get(filter: i => i.Name == itemName).FirstOrDefault();
 
                 if (existingItem != null)
                 {
                     existingItem.Description = newDescription;
-                    _dbContext.SaveChanges();
+                    _unitOfWork.Save();
                     return true;
                 }
 
@@ -54,7 +59,6 @@ namespace WebAuctions.Persistence.SqlPersistence
             {
                 throw new Exception("Failed to update item description", ex);
             }
-
         }
     }
 }
