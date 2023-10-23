@@ -21,6 +21,17 @@ namespace WebAuctions.Core.Service
         {
             return _auctionPersistence.GetAll();
         }
+
+        public List<Auction> GetUsersOngoingAuctions(string username, DateTime now)
+        {
+            return _auctionPersistence.GetUsersOngoingAuctions(username, now);
+        }
+
+        public List<Auction> GetUsersWonAuctions(string username, DateTime now)
+        {
+            return _auctionPersistence.GetUsersWonAuctions(username, now);
+        }
+
         public List<Auction> GetAuctionByUserName(string auctioneer)
         {
             return _auctionPersistence.GetAuctionByUserName(auctioneer);

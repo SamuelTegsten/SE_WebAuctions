@@ -24,40 +24,9 @@ namespace WebAuctions.Controllers
 
             string userName = User.Identity.Name;
             List<Auction> auctions = auctionService.GetAll();
-            List<Auction> current = new List<Auction>();
-            List<Auction> won = new List<Auction>();
-            //current auctions
-            foreach(var a in auctions)
-            {
+            List<Auction> current = auctionService.GetUsersOngoingAuctions(userName, DateTime.Now);
 
-                if (a.ExpirationDate > DateTime.Now)
-                {
-                    foreach (var b in a.Bid)
-                    {
-                        if (b.BidderName == userName)
-                        {
-                            current.Add(a);
-                            break;
-                        }
-                    }
-                }
-
-            }
-
-
-            //won auctions
-            string highest = "";
-            foreach(var a in auctions)
-            {
-                highest = a.getHighestBidder();
-                if(highest == userName)
-                {
-                    if (a.ExpirationDate <=DateTime.Now)
-                    {
-                        won.Add(a);
-                    }
-                }
-            }
+            List<Auction> won = auctionService.GetUsersWonAuctions(userName, DateTime.Now);
 
             List <AuctionVM> currentVm = new ();
             foreach (var auction in current)
