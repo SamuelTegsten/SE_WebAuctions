@@ -1,88 +1,56 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        h2 {
-            color: #666;
-        }
-
-        p {
-            color: #777;
-        }
-
-        .video-link {
-            display: block;
-            margin-top: 20px;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
-</head>
 <body>
-    <h1>WebAuctions App</h1>
 
-    <h2>Video of Project</h2>
-    <a href="https://www.youtube.com/watch?v=Tb82G0tqd3k" class="video-link">
-        <img src="your-video-thumbnail-image-link-here.jpg" alt="WebAuctions App Video">
-    </a>
+<h1 align="center">Welcome to the No Charity Roster Project!</h1>
+<p align="center">Manage your roster with ease and style. </p>
+<p align="center">My tip whould be to order the melee and ranged one after another so when rolling for a bench, you bench one melee and one ranged at a time.</p>
 
-    <h2>Project Overview</h2>
-    <p>
-        WebAuctions is a .NET web application that implements an online auction platform. It utilizes Identity for user authentication and a self-implemented SQL database from Visual Studio for managing auctions, bids, and items. This app allows users to list auctions, display individual auctions, modify auction descriptions, place bids on auctions, and view their own auctions and the auctions they have won. Additionally, administrators have the ability to view all users and auctions and remove auctions as needed.
-    </p>
+<h2 align="center">🚀 Getting Started</h2>
+<p align="center">Get started with the No Charity Roster by opening the HTML file in your web browser. This application offers an array of features to simplify your roster management:</p>
 
-    <h2>Project Structure</h2>
-    <p>
-        The project follows the Model-View-Controller (MVC) architectural pattern and is organized as follows:
-    </p>
-    <ul>
-        <li><strong>DB:</strong> The database layer where data storage and retrieval are managed.</li>
-        <li><strong>InterfaceDB:</strong> The database interface, which defines the contract for data access.</li>
-        <li><strong>Service:</strong> The service layer responsible for business logic and interacting with the database.</li>
-        <li><strong>Service Interface:</strong> The service interface defining the contract for application services.</li>
-        <li><strong>Controller:</strong> The controller layer for handling HTTP requests and controlling the application's flow.</li>
-    </ul>
-    
-    <h2>Features</h2>
-    <!-- Add feature descriptions here -->
+<ul>
+    <li align="center"><strong>📋 Display Roster:</strong> Easily view your roster in a tabular format, including columns for Name, Class, Spec, Bench Amount, Decrement, and Delete.</li>
+    <li align="center"><strong>🎲 Roll Bench:</strong> Effortlessly select eligible individuals for the bench based on specific criteria by clicking the "Roll Bench" button.</li>
+    <li align="center"><strong>🔄 Reset Bench Counts:</strong> Reset bench counts for all individuals to zero with a simple click on the "Reset Bench Counts" button.</li>
+    <li align="center"><strong>➕ Add New Entries:</strong> Expand your roster by adding new entries through the form at the bottom of the page. Provide Name, Class, Spec, and Bench data, and hit "Submit" to add them.</li>
+    <li align="center"><strong>🔽 Decrement:</strong> Decrease bench counts for individual roster members by clicking the "Decrement" button.</li>
+    <li align="center"><strong>🗑️ Delete:</strong> Remove individuals from the roster with ease using the "Delete" button.</li>
+</ul>
 
-    <h2>Getting Started</h2>
-    <p>
-        To run the WebAuctions app on your local machine, follow these steps:
-    </p>
-    <ol>
-        <li>Clone the repository to your local environment.</li>
-        <li>Open the project in Visual Studio.</li>
-        <li>Configure the connection string in the appsettings.json file to point to your SQL database.</li>
-        <li>Build and run the application.</li>
-        <li>Register as a user or log in to access the full functionality.</li>
-    </ol>
+<h2 align="center">How It Works</h2>
+<p align="center">The No Charity Roster leverages HTML, CSS, and JavaScript to offer a user-friendly interface. Your roster data is stored in your browser's local storage, ensuring you can always access your roster, even if you close the browser.</p>
 
-    <h2>Technologies Used</h2>
-    <ul>
-        <li>.NET Core</li>
-        <li>ASP.NET Core MVC</li>
-        <li>Entity Framework Core</li>
-        <li>SQL Server</li>
-        <li>Identity Framework</li>
-    </ul>
+<h2 align="center">Customization</h2>
+<p align="center">Customize the application to match your preferences and website design by modifying the CSS styles in the provided Style.css file.</p>
 
-    <h2>Contributors</h2>
-    <ul>
-        <li>Samuel Tegsten</li>
-        <li>Esteban Masaya</li>
-    </ul>
+<h2 align="center">Authors</h2>
+<p align="center">Author: Samuel Tegsten </p>
+
+<h2 align="center">License</h2>
+<p align="center">This project is open-source and available under the MIT License.
+
+<h2 align="center">Acknowledgments</h2>
+<p align="center">We extend our gratitude to the open-source community and the developers of various libraries and tools that made this project possible.
+
+<h1 align="center">Video</h1>
+<p align="center">WebApp Display</p>
+<p align="center">
+    <p align="center"> 
+  <a href="https://www.youtube.com/watch?v=4fejMNz1MzY">
+    <img src="https://img.youtube.com/vi/4fejMNz1MzY/0.jpg" alt="Click to Watch Video">
+  </a>
+   </p>
+   <p align="center">Code Overview</p>
+   <p align="center">
+  <a href="https://www.youtube.com/watch?v=ePp51SFfLJg">
+    <img src="https://img.youtube.com/vi/ePp51SFfLJg/0.jpg" alt="Click to Watch Video" align="center">
+  </a>
+   </p>
+</p>
+
+<p align="center">Thank you for choosing the No Charity Roster application. If you have any questions, suggestions, or issues, please feel free to open an issue or contribute to the project on GitHub.</p>
+
+<p align="center">Happy roster management!</p>
 </body>
 </html>
