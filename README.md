@@ -31,7 +31,7 @@
 
 <h2 align="center">Authors</h2>
 <p align="center">Author: Samuel Tegsten (stegsten@kth.se) </p>
-<p align="center">Author: Esteban Masaya (insert mail)</p>
+<p align="center">Author: Esteban Masaya (estmm@kth.se)</p>
 
 <h2 align="center">License</h2>
 <p align="center">This project is open-source and available under the MIT License.
