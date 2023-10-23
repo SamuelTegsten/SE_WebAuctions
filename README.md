@@ -1,35 +1,5 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        h2 {
-            color: #666;
-        }
-
-        p {
-            color: #777;
-        }
-
-        .video-link {
-            display: block;
-            margin-top: 20px;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
-</head>
 <body>
     <h1>WebAuctions App</h1>
 
