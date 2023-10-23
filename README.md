@@ -7,9 +7,9 @@
 
 <h2 align="center">🚀 Getting Started</h2>
 <p align="center">Get started with the WebAuctions application by visiting the web page. This application offers a wide range of features to facilitate your online auctions::</p>
-<ul>
-    <p align="center"><strong> 🔗 User Management: Register and log in to access the system and manage your user profile.</p>
-    <p align="center"><strong>Auctions:🛒 Create new auctions, view available auctions, and place bids.</p>
+<ul align="center">
+    <p align="center"><strong>🔗 User Management: Register and log in to access the system and manage your user profile.</p>
+    <p align="center"><strong>🛒 Auctions: Create new auctions, view available auctions, and place bids.</p>
     <p align="center"><strong>🏆 Auction History: View the auctions you've created and the ones you've won.</p>
     <p align="center"><strong>🔧 Admin Features: Admins can manage users and auctions, including removal if necessary.</p>
     <p align="center"><strong>🗑️ Delete:</strong> Remove individuals from the app with ease using the "Delete" button.</p>
@@ -18,11 +18,10 @@
 <p align="center">The WebAuctions application is built on .NET Core and ASP.NET Core MVC.</p>
 <p align="center">It leverages Identity for user authentication and a self-implemented SQL database for data storage. Enjoy the user-friendly interface to manage your auctions and user accounts.</p>
 
-
 <h2 align="center">Technologies Used</h2>
 <p align="center">The WebAuctions project utilizes the following technologies:</p>
 
-<ul>
+<ul align="center">
     <p align="center"><strong>.NET Core</p>
     <p align="center"><strong>ASP.NET Core MVC</p>
     <p align="center"><strong>Entity Framework Core</p>
