@@ -33,12 +33,6 @@
 <p align="center">Author: Samuel Tegsten (stegsten@kth.se) </p>
 <p align="center">Author: Esteban Masaya (estmm@kth.se)</p>
 
-<h2 align="center">License</h2>
-<p align="center">This project is open-source and available under the MIT License.
-
-<h2 align="center">Acknowledgments</h2>
-<p align="center">We extend our gratitude to the open-source community and the developers of various libraries and tools that made this project possible.
-
 <h1 align="center">Video</h1>
 <p align="center">WebApp Display</p>
 <p align="center">
