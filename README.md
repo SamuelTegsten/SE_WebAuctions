@@ -22,27 +22,27 @@
 <p align="center">The WebAuctions project utilizes the following technologies:</p>
 
 <ul align="center">
-    <li>.NET Core</li>
-    <li>ASP.NET Core MVC</li>
-    <li>Entity Framework Core</li>
-    <li>SQL Server</li>
-    <li>Identity Framework</li>
+    <li align="center>.NET Core</li>
+    <l align="centeri>ASP.NET Core MVC</li>
+    <l align="centeri>Entity Framework Core</li>
+    <li align="center>SQL Server</li>
+    <li align="center>Identity Framework</li>
 </ul>
 
 <h2 align="center">Contributors</h2>
 <p align="center">Contributors to the WebAuctions project:</p>
 <ul align="center">
-    <li>Samuel Tegsten</li>
-    <li>Esteban Masaya</li>
+    <li align="center>Samuel Tegsten</li>
+    <li align="center>Esteban Masaya</li>
 </ul>
 
 <h2 align="center">Video</h2>
-<p align="center">Video demonstrations of the project:</p>
+<p align="center">WebApp Display</p>
 <p align="center">
-    <a href="https://www.youtube.com/watch?v=Tb82G0tqd3k">
-        <img src="your-video-thumbnail-image-link-here.jpg" alt="Click to Watch Video">
-    </a>
-</p>
+    <p align="center"> 
+  <a href="https://www.youtube.com/watch?v=Tb82G0tqd3k">
+    <img src="https://img.https://www.youtube.com/watch?v=Tb82G0tqd3k/0.jpg" alt="Click to Watch Video">
+  </a>
 
 <p align="center">Thank you for choosing the WebAuctions application. If you have any questions, suggestions, or issues, please feel free to contact us or contribute to the project on GitHub.</p>
 
