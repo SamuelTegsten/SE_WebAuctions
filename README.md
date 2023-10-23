@@ -67,16 +67,5 @@ To run the WebAuctions app on your local machine, follow these steps:
 
 ## Contributors
 
-- [Your Name]
-- [Contributor 2]
-- [Contributor 3]
-
-## License
-
-This project is licensed under the [License Name] - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- [Author's Acknowledgments]
-
-Feel free to reach out to us if you have any questions or encounter any issues. Thank you for using the WebAuctions app!
+- Samuel Tegsten 
+- Esteban Masaya
