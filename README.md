@@ -1,5 +1,9 @@
 # WebAuctions App
 
+## Video of project
+
+You can watch a video demonstration of the project [here](https://www.youtube.com/watch?v=Tb82G0tqd3k).
+
 ## Project Overview
 
 WebAuctions is a .NET web application that implements an online auction platform. It utilizes Identity for user authentication and a self-implemented SQL database from Visual Studio for managing auctions, bids, and items. This app allows users to list auctions, display individual auctions, modify auction descriptions, place bids on auctions, and view their own auctions and the auctions they have won. Additionally, administrators have the ability to view all users and auctions and remove auctions as needed.
