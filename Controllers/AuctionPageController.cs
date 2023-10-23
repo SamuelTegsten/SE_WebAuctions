@@ -25,9 +25,10 @@ namespace WebAuctions.Controllers
 
             Auction auctions = auctionService.GetAuctionById(id);
             List<BidVM> tempBid = new List<BidVM>();
+
             foreach (var b in auctions.Bid)
             {
-                tempBid.Add(BidVM.FromBid(b));
+            tempBid.Add(BidVM.FromBid(b));
             }
 
             AuctionVM vm = new();

@@ -161,13 +161,11 @@ namespace WebAuctions.Persistence.SqlPersistence
 
         public Auction GetAuctionById(int id)
         {
-            var auctionDb = _dbContext.AuctionDBs
-                .Include(a => a.Bids)
-                .FirstOrDefault(a => a.Id == id);
+            var auctionDb = _unitOfWork.AuctionRepository.Get(filter: a => a.Id == id, null, "Bids").FirstOrDefault();
 
             if (auctionDb != null)
             {
-                Item item = GetItem(auctionDb.ItemName); 
+                Item item = GetItem(auctionDb.ItemName);
 
                 var auction = new Auction(
                     auctionDb.Id,
@@ -175,8 +173,8 @@ namespace WebAuctions.Persistence.SqlPersistence
                     item,
                     auctionDb.ExpirationDate,
                     auctionDb.Date,
-                    auctionDb.Bids.Select(b => new Bid(b.Id, b.BidderName, b.BidAmount, b.BidPlacedTime)).ToList(), 
-                    auctionDb.AuctionName 
+                    auctionDb.Bids.Select(b => new Bid(b.Id, b.BidderName, b.BidAmount, b.BidPlacedTime)).ToList(),
+                    auctionDb.AuctionName
                 );
 
                 return auction;
@@ -184,7 +182,6 @@ namespace WebAuctions.Persistence.SqlPersistence
 
             throw new InvalidOperationException("Auction not found");
         }
-
 
         public List<Auction> GetAuctionsByName(string userName)
         {
