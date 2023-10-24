@@ -5,7 +5,7 @@
 <h1 align="center">Welcome to the No Charity Roster Project!</h1>
 <p align="center">Manage your online auctions with ease and style.</p>
 
-<p align="center">Architecture of the WebAuction Project using Auction class as example.</p>
+<h2 align="center">Architecture using Auction class as example.</h2>
   <img src="MVC_Flowchart_Repo.png" alt="MVC Flowchart" align="center">
 
 
