@@ -2,7 +2,7 @@
 <html>
 <body>
 
-<h1 align="center">Welcome to the No Charity Roster Project!</h1>
+<h1 align="center">Welcome to the the WebAuctions Project!</h1>
 <p align="center">Manage your online auctions with ease and style.</p>
 
 <h2 align="center">Architecture using Auction class as example.</h2>
