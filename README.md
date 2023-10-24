@@ -6,7 +6,7 @@
 <p align="center">Manage your online auctions with ease and style.</p>
 
 <p align="center">Architecture of the WebAuction Project.</p>
-![MVC Flowchart](MVC_Flowchart_Repo.png)
+  <img src="MVC_Flowchart_Repo.png" alt="MVC Flowchart" align="center">
 
 
 <h2 align="center">🚀 Getting Started</h2>
